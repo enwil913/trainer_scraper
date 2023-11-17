@@ -27,12 +27,12 @@ export default async function getTrainers(
       });    
     const dom = new JSDOM(data);
     
-    console.log(dom);
-
     //filter data here
     const trainersElement: HTMLCollectionOf<Element> =
       dom.window.document.querySelectorAll(".trs");
 
+    console.log(trainersElement);
+    
     const trainers = Array.from(trainersElement, (trainer) => {
     const trainerText = removeConsecutiveBlanks(trainer.textContent);
     const trainerInfoArr = trainerText.split(" ");
