@@ -27,7 +27,7 @@ const TrainerResults: React.FC = () => {
       <div className="container">
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
-            <div>
+            <div key={trainer.trainerName}>
                 <h3>{trainer.trainerName}</h3>
                 <p>{trainer.trainerWin}</p>
             </div>
