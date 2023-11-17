@@ -18,15 +18,21 @@ export default async function getTrainers(
 ) {
   try {
     const { data } = await axios.get(getUrl);
-    const dom = new JSDOM(data);
+    const big5Data = data.then(data => {
+        const textDecoder = new TextDecoder('big5')
+        const str = textDecoder.decode(data.data)
+        return str
+    })
+    const dom = new JSDOM(big5Data);
     
     //filter data here
     const trainersElement: HTMLCollectionOf<Element> =
       dom.window.document.querySelectorAll(".trs");
 
     const trainers = Array.from(trainersElement, (trainer) => {
-      const trainerInfoArr = trainers.split(" ");
-      const trainerName = trainerInfoArr[4] + " " + trainerInfoArr[1];
+      const trainerText = trainer.textContent;
+      const trainerInfoArr = trainerText.split(" ");
+      const trainerName = trainerInfoArr[4];
       const trainerWin = trainerInfoArr[0];
       return {
         trainerName,
