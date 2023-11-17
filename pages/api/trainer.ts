@@ -25,8 +25,7 @@ export default async function getTrainers(
       dom.window.document.querySelectorAll(".trs");
 
     const trainers = Array.from(trainersElement, (trainer) => {
-      const trainerInfo = removeConsecutiveBlanks(trainer.textContent);
-      const trainerInfoArr = trainerInfo.split("<td>");
+      const trainerInfoArr = trainers.split(" ");
       const trainerName = trainerInfoArr[4] + " " + trainerInfoArr[1];
       const trainerWin = trainerInfoArr[0];
       return {
