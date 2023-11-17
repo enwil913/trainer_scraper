@@ -17,13 +17,11 @@ export default async function getTrainers(
   res: NextApiResponse
 ) {
   try {
-      const { data } = await axios.get(getUrl, {
-      headers: {
-        charset: 'big5'
-    },
-    });
-
+    const { data } = await axios.get(getUrl);
+    
     const dom = new JSDOM(data);
+    
+    console.log(data);
     
     //filter data here
     const trainersElement: HTMLCollectionOf<Element> =
