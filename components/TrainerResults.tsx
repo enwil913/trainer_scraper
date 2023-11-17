@@ -27,11 +27,11 @@ const TrainerResults: React.FC = () => {
       <div className="container">
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
-            <div key={trainer.trainerName}>
-                <h3>Trainer: {trainer.trainerName}</h3>
-                <p>Win: {trainer.trainerWin}</p>
+            <div key={trainer.trainerName} className='trainer'>
+              <h3>{trainer.trainerName}</h3>
+              <p>{trainer.trainerWin}</p>  
             </div>
-          ))
+              ))
         ) : (
           <div className="lds-hourglass"></div>
         )}
