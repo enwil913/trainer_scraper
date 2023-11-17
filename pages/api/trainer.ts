@@ -26,22 +26,25 @@ export default async function getTrainers(
         }]
       });    
     const dom = new JSDOM(data);
+    const trainersTable : HTMLCollectionOf<Element> 
+        = dom.window.document.querySelectorAll(".stable tr");
     
-    //filter data here
-    const trainersElement: HTMLCollectionOf<Element> =
-      dom.window.document.querySelectorAll(".trs");
+    // //filter data here
+    // const trainersElement: HTMLCollectionOf<Element> =
+    //   dom.window.document.querySelectorAll(".trs");
 
-    console.log(trainersElement);
-    
-    const trainers = Array.from(trainersElement, (trainer) => {
-    const trainerText = removeConsecutiveBlanks(trainer.textContent);
-    const trainerInfoArr = trainerText.split(" ");
-    const trainerName = trainerInfoArr[4];
-    const trainerWin = trainerInfoArr[0];
-    return {
-        trainerName,
-        trainerWin,
-      };
+
+    const trainers = Array.from(trainersTable, (trainer) => {
+        console.log(trainer.textContent);
+
+        const trainerText = removeConsecutiveBlanks(trainer.textContent);
+        const trainerInfoArr = trainerText.split(" ");
+        const trainerName = trainerInfoArr[4];
+        const trainerWin = trainerInfoArr[0];
+        return {
+            trainerName,
+            trainerWin,
+        };
     });
 
     res.status(200).json({trainerData: trainers});
