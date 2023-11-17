@@ -21,20 +21,21 @@ export default async function getTrainers(
     const big5Data = data.then(data => {
         const textDecoder = new TextDecoder('big5')
         const str = textDecoder.decode(data.data)
+        console.log(str)
         return str
     })
-    const dom = new JSDOM(big5Data);
+    const dom = new JSDOM(data);
     
     //filter data here
     const trainersElement: HTMLCollectionOf<Element> =
       dom.window.document.querySelectorAll(".trs");
 
     const trainers = Array.from(trainersElement, (trainer) => {
-      const trainerText = trainer.textContent;
-      const trainerInfoArr = trainerText.split(" ");
-      const trainerName = trainerInfoArr[4];
-      const trainerWin = trainerInfoArr[0];
-      return {
+    const trainerText = removeConsecutiveBlanks(trainer.textContent);
+    const trainerInfoArr = trainerText.split(" ");
+    const trainerName = trainerInfoArr[4];
+    const trainerWin = trainerInfoArr[0];
+    return {
         trainerName,
         trainerWin,
       };
