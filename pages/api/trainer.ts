@@ -18,12 +18,6 @@ export default async function getTrainers(
 ) {
   try {
     const { data } = await axios.get(getUrl);
-    const big5Data = data.then(data => {
-        const textDecoder = new TextDecoder('big5')
-        const str = textDecoder.decode(data.data)
-        console.log(str)
-        return str
-    })
     const dom = new JSDOM(data);
     
     //filter data here
