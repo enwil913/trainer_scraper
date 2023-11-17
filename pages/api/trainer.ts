@@ -38,8 +38,8 @@ export default async function getTrainers(
 
         // console.log(trainer.textContent);
         console.log(trainer.innerHTML)
-        const trainerText = removeConsecutiveBlanks(trainer.textContent);
-        const trainerInfoArr = trainerText.split(" ");
+        const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
+        const trainerInfoArr = trainerText.split("<td>");
         const trainerName = trainerInfoArr[4];
         const trainerWin = trainerInfoArr[0];
         return {
