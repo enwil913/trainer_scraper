@@ -35,8 +35,9 @@ export default async function getTrainers(
 
 
     const trainers = Array.from(trainersTable, (trainer) => {
-        console.log(trainer.textContent);
 
+        // console.log(trainer.textContent);
+        console.log(trainer.innerHTML)
         const trainerText = removeConsecutiveBlanks(trainer.textContent);
         const trainerInfoArr = trainerText.split(" ");
         const trainerName = trainerInfoArr[4];
