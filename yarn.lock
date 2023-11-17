@@ -130,10 +130,10 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
-"@types/react@^18.0.28":
-  "integrity" "sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew=="
-  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.28.tgz"
-  "version" "18.0.28"
+"@types/react@^18.2.37":
+  "integrity" "sha512-RGAYMi2bhRgEXT3f4B92WTohopH6bIXw05FuGlmJEnv/omEn190+QYEIYxIAuIBdKgboYYdVved2p1AxZVQnaw=="
+  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.2.37.tgz"
+  "version" "18.2.37"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"

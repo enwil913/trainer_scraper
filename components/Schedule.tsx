@@ -13,7 +13,7 @@ const Schedule: React.FC = () => {
 
   useEffect(() => {
     const fetchScheduleData = async () => {
-      const { data } = await axios.get<ScheduleResponse>(
+      const { data }  = await axios.get<ScheduleResponse>(
         `${window.location.href}/api/schedule`
       );
       setScheduleData(data.scheduleData); 
