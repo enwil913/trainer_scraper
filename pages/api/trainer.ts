@@ -17,7 +17,6 @@ export default async function getTrainers(
   res: NextApiResponse
 ) {
   try {
-    // const { data } = await axios.get(getUrl);
     const { data } = await axios.get(getUrl, {
         responseType: 'arraybuffer',
         transformResponse: [function (data) {
@@ -29,19 +28,14 @@ export default async function getTrainers(
     const trainersTable : HTMLCollectionOf<Element> 
         = dom.window.document.querySelectorAll(".stable tr");
     
-    // //filter data here
-    // const trainersElement: HTMLCollectionOf<Element> =
-    //   dom.window.document.querySelectorAll(".trs");
-
-
     const trainers = Array.from(trainersTable, (trainer) => {
 
-        // console.log(trainer.textContent);
-        console.log(trainer.innerHTML)
+        // console.log(trainer.innerHTML)
         const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
         const trainerInfoArr = trainerText.split("<td>");
-        const trainerName = trainerInfoArr[5];
-        const trainerWin = trainerInfoArr[1];
+        const trainerName = trainerInfoArr[5].substring(trainerInfoArr[5].indexOf(">") + 1, trainerInfoArr[5].lastIndexOf("<"));
+        const trainerWin = trainerInfoArr[1].substring(0, trainerInfoArr[1].lastIndexOf("<"));
+        //to be implement...map trainerName to shortName
         return {
             trainerName,
             trainerWin,
