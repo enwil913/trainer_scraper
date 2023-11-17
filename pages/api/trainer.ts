@@ -17,11 +17,17 @@ export default async function getTrainers(
   res: NextApiResponse
 ) {
   try {
-    const data = await axios.get(getUrl);
-    
+    // const { data } = await axios.get(getUrl);
+    const { data } = await axios.get(getUrl, {
+        responseType: 'arraybuffer',
+        transformResponse: [function (data) {
+          const iconv = require('iconv-lite')
+          return iconv.decode(Buffer.from(data), 'big5')
+        }]
+      });    
     const dom = new JSDOM(data);
     
-    console.log(data);
+    console.log(dom);
 
     //filter data here
     const trainersElement: HTMLCollectionOf<Element> =
