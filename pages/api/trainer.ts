@@ -54,8 +54,6 @@ export default async function getTrainers(
                 trainerWin,
             };
         });
-        //remove the first element
-        delete trainers[0];
         res.status(200).json({trainerData: trainers});
 
     } catch (error) {
