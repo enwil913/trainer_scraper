@@ -30,7 +30,7 @@ export default async function getTrainers(
         = dom.window.document.querySelectorAll(".stable tr");
 
     const testTD : HTMLCollectionOf<Element> 
-    = dom.window.document.querySelectorAll(".stable tr td");
+    = dom.window.document.querySelectorAll(".stable tr");
     console.log(testTD);
 
     const trainers = Array.from(trainersTable, (trainer) => {
