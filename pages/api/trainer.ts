@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { JSDOM } from "jsdom";
+import next from "next/types";
 
 const getUrl = `https://racing.on.cc/racing/ifo/current/rjifob0001x0.html`;
 
@@ -27,7 +28,12 @@ export default async function getTrainers(
     const dom = new JSDOM(data);
     const trainersTable : HTMLCollectionOf<Element> 
         = dom.window.document.querySelectorAll(".stable tr");
-    
+
+    const testTD : HTMLCollectionOf<Element> 
+    = dom.window.document.querySelectorAll(".stable tr td");
+
+    console.log(testTD);
+
     const trainers = Array.from(trainersTable, (trainer) => {
         // console.log(trainer.innerHTML)
         const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
@@ -36,12 +42,15 @@ export default async function getTrainers(
         let trainerWin = 'No Trainer';
 
         if (trainerInfoArr[5] !== undefined) {
-            trainerName = trainerInfoArr[5].substring(trainerInfoArr[5].indexOf(">") + 1, trainerInfoArr[5].lastIndexOf("<"));
+            const firstIndex = trainerInfoArr[5].indexOf(">")
+            const nextIndex = trainerInfoArr[5].indexOf("<", firstIndex + 1)
+            trainerName = trainerInfoArr[5].substring(firstIndex + 1, nextIndex);
             if (trainerInfoArr[1] !== undefined) {
-                trainerWin = trainerInfoArr[1].substring(0, trainerInfoArr[1].lastIndexOf("<"));
-                //to be implement...map trainerName to shortName
+                const nextIndex = trainerInfoArr[5].indexOf("<")
+                    trainerWin = trainerInfoArr[1].substring(0, nextIndex);
             }
         }
+        //to be implement...map trainerName to shortName
         return {
             trainerName,
             trainerWin,
