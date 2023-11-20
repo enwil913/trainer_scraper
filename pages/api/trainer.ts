@@ -32,19 +32,21 @@ export default async function getTrainers(
         // console.log(trainer.innerHTML)
         const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
         const trainerInfoArr = trainerText.split("<td>");
+        let trainerName = 'No Trainer';
+        let trainerWin = 'No Trainer';
 
         if (trainerInfoArr[5] !== undefined) {
-            const trainerName = trainerInfoArr[5].substring(trainerInfoArr[5].indexOf(">") + 1, trainerInfoArr[5].lastIndexOf("<"));
+            trainerName = trainerInfoArr[5].substring(trainerInfoArr[5].indexOf(">") + 1, trainerInfoArr[5].lastIndexOf("<"));
             if (trainerInfoArr[1] !== undefined) {
-                const trainerWin = trainerInfoArr[1].substring(0, trainerInfoArr[1].lastIndexOf("<"));
+                trainerWin = trainerInfoArr[1].substring(0, trainerInfoArr[1].lastIndexOf("<"));
                 //to be implement...map trainerName to shortName
-                return {
-                    trainerName,
-                    trainerWin,
-                };
             }
         }
-    });
+        return {
+            trainerName,
+            trainerWin,
+        };
+});
 
     res.status(200).json({trainerData: trainers});
   } catch (error) {
