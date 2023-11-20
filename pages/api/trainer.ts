@@ -31,7 +31,6 @@ export default async function getTrainers(
 
     const testTD : HTMLCollectionOf<Element> 
     = dom.window.document.querySelectorAll(".stable tr td");
-
     console.log(testTD);
 
     const trainers = Array.from(trainersTable, (trainer) => {
@@ -46,8 +45,8 @@ export default async function getTrainers(
             const nextIndex = trainerInfoArr[5].indexOf("<", firstIndex + 1)
             trainerName = trainerInfoArr[5].substring(firstIndex + 1, nextIndex);
             if (trainerInfoArr[1] !== undefined) {
-                const nextIndex = trainerInfoArr[5].indexOf("<")
-                    trainerWin = trainerInfoArr[1].substring(0, nextIndex);
+                const nextIndex = trainerInfoArr[1].indexOf("<")
+                trainerWin = trainerInfoArr[1].substring(0, nextIndex);
             }
         }
         //to be implement...map trainerName to shortName
