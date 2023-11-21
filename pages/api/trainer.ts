@@ -67,16 +67,17 @@ function getTrainersList(data) {
 
 function getDatesArray(data) {
     const dom = new JSDOM(data);
-    const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('select');
+    const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('option');
     
     const dates = Array.from(dateSelect, (date) => {
       return date.textContent;
   });
   dates.map((date)=> {
-    console.log('1');
+    console.log(date.length);
     console.log(date);
   });
   dates.shift();
+
   dates.map((date)=> {
     console.log('2');
     console.log(date);
