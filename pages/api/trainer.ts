@@ -5,6 +5,7 @@ import next from "next/types";
 
 const getUrl = `https://racing.on.cc/racing/ifo/current/rjifob0001x0.html`;
 
+
 function removeConsecutiveBlanks(str: string) {
   // replace two or more consecutive spaces with a single space
   str = str.replace(/\s{2,}/g, " ");

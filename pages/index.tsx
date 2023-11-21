@@ -10,7 +10,7 @@ export default function Home() {
         <title>Trainer Scraper</title>
         <meta
           name="description"
-          content="Trainer Result"
+          content="Trainers"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

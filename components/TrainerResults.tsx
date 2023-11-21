@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Trainer from "./Trainer";
+
 interface Result {
     trainerName: string;
     trainerWin: string;
@@ -23,15 +25,12 @@ const TrainerResults: React.FC = () => {
 
   return (
     <main>
-      <h1 className="title">Trainer Result</h1>
+      <h1 className="title">手影...</h1>
       <div className="container">
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
-            <div key={trainer.trainerName} className='trainer'>
-              <h3>{trainer.trainerName}</h3>
-              <p>{trainer.trainerWin}</p>  
-            </div>
-              ))
+            <Trainer key={trainer.trainerName} trainer={trainer}/>
+            ))
         ) : (
           <div className="lds-hourglass"></div>
         )}
@@ -41,3 +40,4 @@ const TrainerResults: React.FC = () => {
 };
 
 export default TrainerResults;
+
