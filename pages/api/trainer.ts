@@ -63,7 +63,17 @@ function getTrainersList(data) {
     } catch (error) {
         console.error(error);
     }
+}
 
+function getDatesArray(data) {
+    const dom = new JSDOM(data);
+    const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('select');
+    
+    const dates = Array.from(dateSelect, (date) => {
+      return date.textContent;
+  });
+  dates.shift()
+  return dates
 }
 
 export default async function getTrainers(
@@ -79,15 +89,11 @@ export default async function getTrainers(
               return iconv.decode(Buffer.from(data), 'big5')
             }]
           });
-          const dateData = raceDate.data;    
-          const dom = new JSDOM(dateData);
-          const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('select');
+          const datesArray = getDatesArray(raceDate.data);
+          datesArray.map((date)=> {
+            console.log(date)
+          });
           
-          const dates = Array.from(dateSelect, (date) => {
-            console.log(date.textContent);
-            return date.textContent;
-        });
-
         //get card list
         const cardList = await axios.get(cardListURL, {
             responseType: 'arraybuffer',
@@ -96,7 +102,7 @@ export default async function getTrainers(
               return iconv.decode(Buffer.from(data), 'big5')
             }]
           });    
-        const trainersResult = getTrainersList(cardList.data);
+          const trainersResult = getTrainersList(cardList.data);
 
 
         res.status(200).json({trainerData: trainersResult});
