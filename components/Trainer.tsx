@@ -6,6 +6,7 @@ const Trainer = ({ trainer }) => {
         <div key={trainer.trainerName} className='trainer'>
             <h3>{trainer.trainerName}</h3>
             <p>{trainer.trainerWin}</p>  
+            <p>'Win History'</p>  
       </div>
     )
   }
