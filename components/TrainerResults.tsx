@@ -5,11 +5,13 @@ import Trainer from "./Trainer";
 interface Result {
     trainerName: string;
     trainerWin: string;
+    trainerHistory: [];
 }
 
 interface ResultResponse {
     trainerData: Result[];
-  }
+}
+
 const TrainerResults: React.FC = () => {
   const [trainerData, setTrainerData] = useState<Result[]>([]);
 

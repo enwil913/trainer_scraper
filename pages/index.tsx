@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import Schedule from "../components/Schedule";
 import TrainerResults from "../components/TrainerResults";
 
 export default function Home() {
