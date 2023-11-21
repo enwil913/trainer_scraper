@@ -79,13 +79,13 @@ export default async function getTrainers(
               return iconv.decode(Buffer.from(data), 'big5')
             }]
           });
-        const dateData = raceDate.data;    
-        const dom = new JSDOM(dateData);
-        const dateSelect : HTMLCollectionOf<Element> 
-            = dom.window.document.querySelectorAll('select');
-
-        const dates = Array.from(dateSelect, (date) => {
-            console.log(date.innerHTML)
+          const dateData = raceDate.data;    
+          const dom = new JSDOM(dateData);
+          const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('select');
+          
+          const dates = Array.from(dateSelect, (date) => {
+            console.log(date.textContent);
+            return date.textContent;
         });
 
         //get card list
