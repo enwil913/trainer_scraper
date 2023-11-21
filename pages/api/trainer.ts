@@ -13,6 +13,10 @@ function removeConsecutiveBlanks(str: string) {
   return str;
 }
 
+function checkTrainName({trainerName}) {
+    return trainerName !== 'No Trainer'
+}
+
 export default async function getTrainers(
   req: NextApiRequest,
   res: NextApiResponse
@@ -54,7 +58,8 @@ export default async function getTrainers(
                 trainerWin,
             };
         });
-        res.status(200).json({trainerData: trainers});
+        const trainersResult = trainers.filter(checkTrainName);
+        res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
         console.error(error);
