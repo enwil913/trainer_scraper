@@ -70,12 +70,15 @@ function getDatesArray(data) {
     const dateSelect : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('select');
     
     const dates = Array.from(dateSelect, (date) => {
-        console.log(date)
       return date.textContent;
   });
-  console.log(dates)
+  dates.map((date)=> {
+    console.log(date)
+  });
   dates.shift();
-  console.log(dates);
+  dates.map((date)=> {
+    console.log(date)
+  });
   return dates
 }
 
