@@ -18,15 +18,8 @@ function checkTrainName({trainerName}) {
     return trainerName !== 'No Trainer'
 }
 
-async function getTrainersList() {
+function getTrainersList(data) {
     try {
-        const { data } = await axios.get(getUrl, {
-            responseType: 'arraybuffer',
-            transformResponse: [function (data) {
-              const iconv = require('iconv-lite')
-              return iconv.decode(Buffer.from(data), 'big5')
-            }]
-          });    
         const dom = new JSDOM(data);
         const trainersTable : HTMLCollectionOf<Element> 
             = dom.window.document.querySelectorAll(".stable tr");
@@ -75,13 +68,14 @@ export default async function getTrainers(
   res: NextApiResponse
 ) {
     try {
-        // const { data } = await axios.get(getUrl, {
-        //     responseType: 'arraybuffer',
-        //     transformResponse: [function (data) {
-        //       const iconv = require('iconv-lite')
-        //       return iconv.decode(Buffer.from(data), 'big5')
-        //     }]
-        //   });    
+        const { data } = await axios.get(getUrl, {
+            responseType: 'arraybuffer',
+            transformResponse: [function (data) {
+              const iconv = require('iconv-lite')
+              return iconv.decode(Buffer.from(data), 'big5')
+            }]
+          });    
+
         // const dom = new JSDOM(data);
         // const trainersTable : HTMLCollectionOf<Element> 
         //     = dom.window.document.querySelectorAll(".stable tr");
@@ -118,7 +112,7 @@ export default async function getTrainers(
         //     trainersResult[t].trainerHistory = [1, 2, 3]
         // }
        
-        const trainersResult = getTrainersList();
+        const trainersResult = getTrainersList(data);
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
