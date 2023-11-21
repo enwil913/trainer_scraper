@@ -56,7 +56,7 @@ function getTrainersList(data) {
         //fitler the trainer and fill-in trainer details
         const trainersResult = trainers.filter(checkTrainName);
         for (var t in trainersResult) {
-            trainersResult[t].trainerHistory = [1, 2, 3]
+            trainersResult[t].trainerHistory = [1, 2, 3];
         }
     
         return trainersResult
@@ -72,7 +72,8 @@ function getDatesArray(data) {
     const dates = Array.from(dateSelect, (date) => {
       return date.textContent;
   });
-  dates.shift()
+  dates.shift();
+  console.log(dates);
   return dates
 }
 
@@ -93,7 +94,7 @@ export default async function getTrainers(
           datesArray.map((date)=> {
             console.log(date)
           });
-          
+
         //get card list
         const cardList = await axios.get(cardListURL, {
             responseType: 'arraybuffer',
