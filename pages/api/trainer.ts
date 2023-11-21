@@ -72,16 +72,7 @@ function getDatesArray(data) {
     const dates = Array.from(dateSelect, (date) => {
       return date.textContent;
   });
-  dates.map((date)=> {
-    console.log(date.length);
-    console.log(date);
-  });
   dates.shift();
-
-  dates.map((date)=> {
-    console.log('2');
-    console.log(date);
-  });
   return dates
 }
 
