@@ -7,6 +7,9 @@ import { JSDOM } from "jsdom";
 const localResultURL = "https://racing.on.cc/racing/rat/current/rjratg0001x0.html"
 //for race card list
 const cardListURL = "https://racing.on.cc/racing/ifo/current/rjifob0001x0.html"
+//for traniner result
+const localResultURLPrefix = "https://racing.on.cc/racing/rat/"
+const localResultURLPostfix  = "/rjratg0001x0.html"   
 
 
 function removeConsecutiveBlanks(str: string) {
@@ -90,8 +93,11 @@ export default async function getTrainers(
             }]
           });
           const datesArray = getDatesArray(raceDate.data);
-          datesArray.map((date)=> {
-            console.log(date)
+          const raceDatesURL = datesArray.map((date)=> {
+            return localResultURLPrefix + date + localResultURLPostfix
+          });
+          raceDatesURL.map((url)=> {
+            console.log(url)
           });
 
         //get card list
