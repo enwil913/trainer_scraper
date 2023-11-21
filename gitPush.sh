@@ -2,7 +2,5 @@
 
 git status
 git add --all
-git commit -m "202231117"
+git commit -m "202231121"
 git push
-echo Press Enter...
-read
