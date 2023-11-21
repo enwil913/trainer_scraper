@@ -73,11 +73,13 @@ function getDatesArray(data) {
       return date.textContent;
   });
   dates.map((date)=> {
-    console.log(date)
+    console.log('1');
+    console.log(date);
   });
   dates.shift();
   dates.map((date)=> {
-    console.log(date)
+    console.log('2');
+    console.log(date);
   });
   return dates
 }
