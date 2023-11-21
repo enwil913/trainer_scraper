@@ -19,50 +19,55 @@ function checkTrainName({trainerName}) {
 }
 
 async function getTrainersList() {
-    const { data } = await axios.get(getUrl, {
-        responseType: 'arraybuffer',
-        transformResponse: [function (data) {
-          const iconv = require('iconv-lite')
-          return iconv.decode(Buffer.from(data), 'big5')
-        }]
-      });    
-    const dom = new JSDOM(data);
-    const trainersTable : HTMLCollectionOf<Element> 
-        = dom.window.document.querySelectorAll(".stable tr");
-
-    // const testTD : HTMLCollectionOf<Element> 
-    // = dom.window.document.querySelectorAll(".stable tr td");
-
-    const trainers = Array.from(trainersTable, (trainer) => {
-        // console.log(trainer.innerHTML)
-        const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
-        const trainerInfoArr = trainerText.split("<td>");
-        let trainerName = 'No Trainer';
-        let trainerWin = 'No Trainer';
-        let trainerHistory = [];
-
-        if (trainerInfoArr[5] !== undefined) {
-            const firstIndex = trainerInfoArr[5].indexOf(">")
-            const nextIndex = trainerInfoArr[5].indexOf("<", firstIndex + 1)
-            trainerName = trainerInfoArr[5].substring(firstIndex + 1, nextIndex);
-            if (trainerInfoArr[1] !== undefined) {
-                const nextIndex = trainerInfoArr[1].indexOf("<")
-                trainerWin = trainerInfoArr[1].substring(0, nextIndex);
+    try {
+        const { data } = await axios.get(getUrl, {
+            responseType: 'arraybuffer',
+            transformResponse: [function (data) {
+              const iconv = require('iconv-lite')
+              return iconv.decode(Buffer.from(data), 'big5')
+            }]
+          });    
+        const dom = new JSDOM(data);
+        const trainersTable : HTMLCollectionOf<Element> 
+            = dom.window.document.querySelectorAll(".stable tr");
+    
+        // const testTD : HTMLCollectionOf<Element> 
+        // = dom.window.document.querySelectorAll(".stable tr td");
+    
+        const trainers = Array.from(trainersTable, (trainer) => {
+            // console.log(trainer.innerHTML)
+            const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
+            const trainerInfoArr = trainerText.split("<td>");
+            let trainerName = 'No Trainer';
+            let trainerWin = 'No Trainer';
+            let trainerHistory = [];
+    
+            if (trainerInfoArr[5] !== undefined) {
+                const firstIndex = trainerInfoArr[5].indexOf(">")
+                const nextIndex = trainerInfoArr[5].indexOf("<", firstIndex + 1)
+                trainerName = trainerInfoArr[5].substring(firstIndex + 1, nextIndex);
+                if (trainerInfoArr[1] !== undefined) {
+                    const nextIndex = trainerInfoArr[1].indexOf("<")
+                    trainerWin = trainerInfoArr[1].substring(0, nextIndex);
+                }
             }
+            return { //init the trainer data
+                trainerName,
+                trainerWin,
+                trainerHistory,
+            };
+        });
+        //fitler the trainer and fill-in trainer details
+        const trainersResult = trainers.filter(checkTrainName);
+        for (var t in trainersResult) {
+            trainersResult[t].trainerHistory = [1, 2, 3]
         }
-        return { //init the trainer data
-            trainerName,
-            trainerWin,
-            trainerHistory,
-        };
-    });
-    //fitler the trainer and fill-in trainer details
-    const trainersResult = trainers.filter(checkTrainName);
-    for (var t in trainersResult) {
-        trainersResult[t].trainerHistory = [1, 2, 3]
+    
+        return trainersResult
+    } catch (error) {
+        console.error(error);
     }
 
-    return trainersResult
 }
 
 export default async function getTrainers(
@@ -70,8 +75,50 @@ export default async function getTrainers(
   res: NextApiResponse
 ) {
     try {
-        const trainersResult = getTrainersList();
-
+        const { data } = await axios.get(getUrl, {
+            responseType: 'arraybuffer',
+            transformResponse: [function (data) {
+              const iconv = require('iconv-lite')
+              return iconv.decode(Buffer.from(data), 'big5')
+            }]
+          });    
+        const dom = new JSDOM(data);
+        const trainersTable : HTMLCollectionOf<Element> 
+            = dom.window.document.querySelectorAll(".stable tr");
+    
+        // const testTD : HTMLCollectionOf<Element> 
+        // = dom.window.document.querySelectorAll(".stable tr td");
+    
+        const trainers = Array.from(trainersTable, (trainer) => {
+            // console.log(trainer.innerHTML)
+            const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
+            const trainerInfoArr = trainerText.split("<td>");
+            let trainerName = 'No Trainer';
+            let trainerWin = 'No Trainer';
+            let trainerHistory = [];
+    
+            if (trainerInfoArr[5] !== undefined) {
+                const firstIndex = trainerInfoArr[5].indexOf(">")
+                const nextIndex = trainerInfoArr[5].indexOf("<", firstIndex + 1)
+                trainerName = trainerInfoArr[5].substring(firstIndex + 1, nextIndex);
+                if (trainerInfoArr[1] !== undefined) {
+                    const nextIndex = trainerInfoArr[1].indexOf("<")
+                    trainerWin = trainerInfoArr[1].substring(0, nextIndex);
+                }
+            }
+            return { //init the trainer data
+                trainerName,
+                trainerWin,
+                trainerHistory,
+            };
+        });
+        //fitler the trainer and fill-in trainer details
+        const trainersResult = trainers.filter(checkTrainName);
+        for (var t in trainersResult) {
+            trainersResult[t].trainerHistory = [1, 2, 3]
+        }
+       
+        // const trainersResult = getTrainersList();
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
