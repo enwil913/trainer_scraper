@@ -135,12 +135,14 @@ export default async function getTrainers(
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
 
-          //get race date result
-          raceDatesURL.map(async (url)=> {
-            const raceDatesResult = await getDatafromURL(url);
-            const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+        const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
+        const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+        //   //get race date result
+        //   raceDatesURL.map(async (url)=> {
+        //     const raceDatesResult = await getDatafromURL(url);
+        //     const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
 
-          });
+        //   });
 
         //get trainer card list
         const cardList = await axios.get(cardListURL, {
