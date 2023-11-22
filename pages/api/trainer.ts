@@ -157,7 +157,7 @@ export default async function getTrainers(
             trainersResult.map(async (trainer) => {
                 trainer.log ='';
                 (await raceDatesResultArray).map((log) => {
-                    trainersResult[0].log = trainersResult[0].log + log
+                    trainer.log = trainer.log + log
         
                 })
             })
