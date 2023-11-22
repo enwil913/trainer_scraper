@@ -152,8 +152,7 @@ export default async function getTrainers(
           });    
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
-          for (var i in raceAllDatesResultsArray) {
-            const raceDatesResultArray = raceAllDatesResultsArray[i]
+          for (const raceDatesResultArray of raceAllDatesResultsArray) {
             console.log(raceDatesResultArray)
             trainersResult.map(async (trainer) => {
                 trainer.log ='';
