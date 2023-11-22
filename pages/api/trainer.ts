@@ -54,7 +54,7 @@ function getRaceDatesResult(data) {
     console.log(raceResultTable.length);
 
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
-        return raceResult.textContent
+        return raceResult.innerHTML
     });
 
     const horseResultHtml = raceResultArray[0]
