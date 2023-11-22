@@ -24,6 +24,14 @@ async function getDatafromURL(url) {
     return page.data
 }
 
+function getEveryNth(arr, nth) {
+    const result = [];
+  
+    for (let index = 0; index < arr.length; index += nth) {
+      result.push(arr[index]);
+    }
+    return result;
+  }
 
 function removeConsecutiveBlanks(str: string) {
   // replace two or more consecutive spaces with a single space
@@ -55,10 +63,9 @@ function getRaceDatesResult(data) {
     const raceResultArray = Array.from(raceResultTable, (date) => {
         return date.textContent;
     });
-  
+    const raceTrainersArray = getEveryNth(raceResultArray, 4);    
     //for testing at this moment
-    return raceResultArray
-      
+    return raceTrainersArray
 }
 
 
