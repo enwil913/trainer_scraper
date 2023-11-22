@@ -51,11 +51,19 @@ function getDatesArray(data) {
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("body");
+    console.log(raceResultTable.length);
 
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
-        console.log(raceResult.innerHTML);
         return raceResult.textContent
     });
+
+    const horseResultHtml = raceResultArray[0]
+    const divHorseRaceHtml = horseResultHtml.split("<tr>\r\n<td colspan='3' align='left'>第");
+    console.log(divHorseRaceHtml.length)
+    if (divHorseRaceHtml.length <= 1) {
+        console.log("Error: No Race Result found")
+        return raceResultArray
+    }
 
     return raceResultArray
       
