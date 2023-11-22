@@ -94,7 +94,8 @@ export default async function getTrainers(
           });
           const datesArray = getDatesArray(raceDate.data);
           const raceDatesURL = datesArray.map((date)=> {
-            return localResultURLPrefix + date.split('/').join('') + localResultURLPostfix
+            const dateSplitted = date.split('/')
+            return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
           raceDatesURL.map((url)=> {
             console.log(url);
