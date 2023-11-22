@@ -63,7 +63,7 @@ function getRaceDatesResult(data) {
         return raceResultArray
     }
     const horseResultHtml = divHtmlContents[1]
-    console.log(horseResultHtml);
+    // console.log(horseResultHtml);
     const divHorseRaceHtml = horseResultHtml.split(">第");
     console.log(divHorseRaceHtml.length)
     if (divHorseRaceHtml.length <= 1) {
