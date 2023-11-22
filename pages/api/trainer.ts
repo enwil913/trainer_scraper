@@ -68,7 +68,7 @@ function getRaceDatesResult(data) {
     // }
     // const horseResultHtml = divHtmlContents[1]
     // console.log(horseResultHtml);
-    const divHorseRaceHtml = fromContentHTML.split('<tr>\r\n<td colspan=\'3\' align=\'left\'>第');
+    const divHorseRaceHtml = fromContentHTML.split('<td colspan=\'3\' align=\'left\'>第');
 
     console.log(divHorseRaceHtml.length)
 
