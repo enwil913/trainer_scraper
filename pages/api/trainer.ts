@@ -132,14 +132,15 @@ export default async function getTrainers(
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
 
-        const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
-        const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-        //   //get race date result
-        //   raceDatesURL.map(async (url)=> {
-        //     const raceDatesResult = await getDatafromURL(url);
-        //     const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-
-        //   });
+        // for testing
+        // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
+        // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+          //get race date result
+          const raceAllDatesResultsArray = raceDatesURL.map(async (url)=> {
+            const raceDatesResult = await getDatafromURL(url);
+            const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+            return raceDatesResultArray
+          });
 
         //get trainer card list
         const cardList = await axios.get(cardListURL, {
@@ -151,11 +152,16 @@ export default async function getTrainers(
           });    
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
-          trainersResult[0].log =''
-          raceDatesResultArray.map((log) => {
-            trainersResult[0].log = trainersResult[0].log + log
-          })
-
+          for (var i in raceAllDatesResultsArray) {
+            const raceDatesResultArray = raceAllDatesResultsArray[i]
+            trainersResult.map((trainer) => {
+                trainer.log =''
+                raceDatesResultArray.map((log) => {
+                    trainersResult[0].log = trainersResult[0].log + log
+        
+                })
+            })
+          }
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
