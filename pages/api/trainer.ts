@@ -162,7 +162,7 @@ export default async function getTrainers(
           //for testing, log the result
           trainersResult[0].log =''
           raceDatesResultArray.map((log) => {
-            trainersResult[0].log = trainersResult[0].log + log
+            trainersResult[0].log = trainersResult[0].log + '<p>' + log + '</p>'
           })
 
         res.status(200).json({trainerData: trainersResult});
