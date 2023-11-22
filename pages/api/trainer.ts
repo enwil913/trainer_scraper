@@ -79,6 +79,21 @@ function getDatesArray(data) {
   return dates
 }
 
+function getRaceDatesResult(data) {
+    console.log('race date result!')
+}
+
+async function getDatafromURL(url) {
+    const data = await axios.get(url, {
+        responseType: 'arraybuffer',
+        transformResponse: [function (data) {
+          const iconv = require('iconv-lite')
+          return iconv.decode(Buffer.from(data), 'big5')
+        }]
+      });
+    return data
+}
+
 export default async function getTrainers(
   req: NextApiRequest,
   res: NextApiResponse
@@ -97,8 +112,10 @@ export default async function getTrainers(
             const dateSplitted = date.split('/')
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
+          //get race date result
           raceDatesURL.map((url)=> {
             console.log(url);
+            const raceDateResult = getDatafromURL(url);
           });
 
         //get card list
