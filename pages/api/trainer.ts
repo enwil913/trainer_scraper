@@ -124,8 +124,8 @@ export default async function getTrainers(
           });
 
           //get race date result
-          raceDatesURL.map((url)=> {
-            const raceDatesResult = getDatafromURL(url);
+          raceDatesURL.map(async (url)=> {
+            const raceDatesResult = await getDatafromURL(url);
             const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
 
           });
