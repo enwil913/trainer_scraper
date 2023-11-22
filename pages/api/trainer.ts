@@ -53,6 +53,7 @@ function getRaceDatesResult(data) {
     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table .trw td");
 
     const raceResultArray = Array.from(raceResultTable, (race) => {
+        console.log('1')
         console.log(race.textContent)
         return race.textContent
     });
@@ -102,9 +103,6 @@ function getTrainersList(data) {
     return trainersResult
 }
 
-
-
-
 export default async function getTrainers(
   req: NextApiRequest,
   res: NextApiResponse
@@ -127,6 +125,7 @@ export default async function getTrainers(
           //get race date result
           raceDatesURL.map((url)=> {
             const raceDatesResult = getDatafromURL(url);
+            console.log(url)
             const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
 
           });
