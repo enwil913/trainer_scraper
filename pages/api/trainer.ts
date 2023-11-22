@@ -50,11 +50,13 @@ function getDatesArray(data) {
 
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table");
+    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("tr");
+
     console.log('1')
-    console.log(raceResultTable)
-    const raceResultArray = Array.from(raceResultTable, (race) => {
-        return race.textContent
+    console.log(raceResultTable.length)
+
+    const raceResultArray = Array.from(raceResultTable, (raceResult) => {
+        return raceResult.textContent
     });
 
     return raceResultArray
@@ -124,7 +126,6 @@ export default async function getTrainers(
           //get race date result
           raceDatesURL.map((url)=> {
             const raceDatesResult = getDatafromURL(url);
-            console.log(url)
             const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
 
           });
