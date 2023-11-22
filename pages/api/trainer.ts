@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { JSDOM } from "jsdom";
+import TrainerResults from "../../components/TrainerResults";
 
 
 //for meta race date meta data
@@ -98,6 +99,7 @@ function getTrainersList(data) {
         let trainerName = 'No Trainer';
         let trainerWin = 'No Trainer';
         let trainerHistory = [];
+        let log = ''
 
         if (trainerInfoArr[5] !== undefined) {
             const firstIndex = trainerInfoArr[5].indexOf(">")
@@ -112,6 +114,7 @@ function getTrainersList(data) {
             trainerName,
             trainerWin,
             trainerHistory,
+            log,
         };
     });
     //fitler the trainer and fill-in trainer details
@@ -160,7 +163,7 @@ export default async function getTrainers(
             }]
           });    
           const trainersResult = getTrainersList(cardList.data);
-
+          TrainerResults[0].log = raceDatesResultArray[0]
 
         res.status(200).json({trainerData: trainersResult});
 

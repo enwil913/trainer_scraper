@@ -9,6 +9,7 @@ const Trainer = ({ trainer }) => {
             <h3>{trainer.trainerName}</h3>
             <p>{trainer.trainerWin}</p>  
             <p>{historyList}</p>  
+            <p>{trainer.log}</p>  
       </div>
     )
   }

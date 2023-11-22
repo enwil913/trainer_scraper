@@ -6,6 +6,7 @@ interface Result {
     trainerName: string;
     trainerWin: string;
     trainerHistory: [];
+    log: string;
 }
 
 interface ResultResponse {
