@@ -50,14 +50,19 @@ function getDatesArray(data) {
 
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("body");
+    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table");
     console.log(raceResultTable.length);
 
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
         return raceResult.innerHTML
     });
-
-    const horseResultHtml = raceResultArray[0]
+    const fromContentHTML = raceResultArray[0]
+    const divHtmlContents = fromContentHTML.split("賽事日期")
+    if (divHtmlContents.length <= 1) {
+        console.log("Error: No Last Win Result found")
+        return raceResultArray
+    }
+    const horseResultHtml = divHtmlContents[1]
     const divHorseRaceHtml = horseResultHtml.split("<tr>\r\n<td colspan='3' align='left'>第");
     console.log(divHorseRaceHtml.length)
     if (divHorseRaceHtml.length <= 1) {
