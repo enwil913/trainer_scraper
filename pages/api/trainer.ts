@@ -75,7 +75,7 @@ function getRaceDatesResult(data) {
         return raceResultArray
     }
 
-    return divHorseRaceHtml
+    return divHorseRaceHtml.slice(2, 10)
       
 }
 
