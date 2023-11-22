@@ -52,9 +52,6 @@ function getDatesArray(data) {
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("#maintable");
-
-    console.log(raceResultTable.length);
-
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
         return raceResult.innerHTML
     });
@@ -69,8 +66,7 @@ function getRaceDatesResult(data) {
     // }
     // const horseResultHtml = divHtmlContents[1]
     // console.log(horseResultHtml);
-    const divHorseRaceHtml = fromContentHTML.split('<tr> <td colspan=\"3\" align=\"left\">第');
-
+    const divHorseRaceHtml = fromContentHTML.split('<td colspan=\"3\" align=\"left\">第');
     console.log(divHorseRaceHtml.length)
 
 
@@ -79,7 +75,7 @@ function getRaceDatesResult(data) {
         return raceResultArray
     }
 
-    return raceResultArray
+    return divHorseRaceHtml
       
 }
 
@@ -164,7 +160,10 @@ export default async function getTrainers(
           });    
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
-          trainersResult[0].log = raceDatesResultArray[0]
+          trainersResult[0].log =''
+          raceDatesResultArray.map((log) => {
+            trainersResult[0].log = trainersResult[0].log + log
+          })
 
         res.status(200).json({trainerData: trainersResult});
 
