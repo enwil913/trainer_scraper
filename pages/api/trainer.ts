@@ -50,7 +50,7 @@ function getDatesArray(data) {
 
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table .trw td");
+    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table");
 
     const raceResultArray = Array.from(raceResultTable, (race) => {
         console.log('1')
