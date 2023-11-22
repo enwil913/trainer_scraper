@@ -50,22 +50,29 @@ function getDatesArray(data) {
 
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table");
+    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("#maintable");
+
     console.log(raceResultTable.length);
 
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
         return raceResult.innerHTML
     });
     const fromContentHTML = raceResultArray[0]
-    const divHtmlContents = fromContentHTML.split("賽事日期")
-    if (divHtmlContents.length <= 1) {
-        console.log("Error: No Last Win Result found")
-        return raceResultArray
-    }
-    const horseResultHtml = divHtmlContents[1]
+    // const divHtmlContents = fromContentHTML.split("賽事日期")
+
+    // console.log(divHtmlContents.length);
+
+    // if (divHtmlContents.length <= 1) {
+    //     console.log("Error: No Last Win Result found")
+    //     return raceResultArray
+    // }
+    // const horseResultHtml = divHtmlContents[1]
     // console.log(horseResultHtml);
-    const divHorseRaceHtml = horseResultHtml.split('<td colspan=\'3\' align=\'left\'>第');
+    const divHorseRaceHtml = fromContentHTML.split('<tr>\r\n<td colspan=\'3\' align=\'left\'>第');
+
     console.log(divHorseRaceHtml.length)
+
+
     if (divHorseRaceHtml.length <= 1) {
         console.log("Error: No Race Result found")
         return raceResultArray
