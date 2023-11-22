@@ -64,7 +64,7 @@ function getRaceDatesResult(data) {
     }
     const horseResultHtml = divHtmlContents[1]
     // console.log(horseResultHtml);
-    const divHorseRaceHtml = horseResultHtml.split("align='left'>第");
+    const divHorseRaceHtml = horseResultHtml.split('<td colspan=\'3\' align=\'left\'>第');
     console.log(divHorseRaceHtml.length)
     if (divHorseRaceHtml.length <= 1) {
         console.log("Error: No Race Result found")
