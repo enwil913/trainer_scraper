@@ -53,6 +53,7 @@ function getRaceDatesResult(data) {
     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("table .trw");
 
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
+        console.log(raceResult.textContent);
         return raceResult.textContent
     });
 
