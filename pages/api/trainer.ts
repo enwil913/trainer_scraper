@@ -154,9 +154,9 @@ export default async function getTrainers(
           //for testing, log the result
           for (var i in raceAllDatesResultsArray) {
             const raceDatesResultArray = raceAllDatesResultsArray[i]
-            trainersResult.map((trainer) => {
-                trainer.log =''
-                raceDatesResultArray.map((log) => {
+            trainersResult.map(async (trainer) => {
+                trainer.log ='';
+                (await raceDatesResultArray).map((log) => {
                     trainersResult[0].log = trainersResult[0].log + log
         
                 })
