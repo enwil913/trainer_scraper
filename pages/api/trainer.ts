@@ -58,7 +58,7 @@ function getRaceDatesResult(data) {
     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
         return raceResult.innerHTML
     });
-    const fromContentHTML = raceResultArray[0].replace(' ', '');
+    const fromContentHTML = raceResultArray[0];
     // const divHtmlContents = fromContentHTML.split("賽事日期")
 
     // console.log(divHtmlContents.length);
@@ -69,7 +69,7 @@ function getRaceDatesResult(data) {
     // }
     // const horseResultHtml = divHtmlContents[1]
     // console.log(horseResultHtml);
-    const divHorseRaceHtml = fromContentHTML.split('<td colspan=\"3\" align=\"left\">第');
+    const divHorseRaceHtml = fromContentHTML.split('<tr> <td colspan=\"3\" align=\"left\">第');
 
     console.log(divHorseRaceHtml.length)
 
