@@ -51,33 +51,17 @@ function getDatesArray(data) {
 
 function getRaceDatesResult(data) {
     const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("#maintable");
-    const raceResultArray = Array.from(raceResultTable, (raceResult) => {
-        return raceResult.innerHTML
+    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('.stableB a[href*="stable_view.cgi"]');
+    const raceResultArray = Array.from(raceResultTable, (date) => {
+        return date.textContent;
     });
-    const fromContentHTML = raceResultArray[0];
-    // const divHtmlContents = fromContentHTML.split("賽事日期")
-
-    // console.log(divHtmlContents.length);
-
-    // if (divHtmlContents.length <= 1) {
-    //     console.log("Error: No Last Win Result found")
-    //     return raceResultArray
-    // }
-    // const horseResultHtml = divHtmlContents[1]
-    // console.log(horseResultHtml);
-    const divHorseRaceHtml = fromContentHTML.split('<td colspan=\"3\" align=\"left\">第');
-    console.log(divHorseRaceHtml.length)
-
-
-    if (divHorseRaceHtml.length <= 1) {
-        console.log("Error: No Race Result found")
-        return raceResultArray
-    }
-
-    return divHorseRaceHtml.slice(2, 10)
+  
+    //for testing at this moment
+    return raceResultArray
       
 }
+
+
 
 
 function getTrainersList(data) {
@@ -162,7 +146,7 @@ export default async function getTrainers(
           //for testing, log the result
           trainersResult[0].log =''
           raceDatesResultArray.map((log) => {
-            trainersResult[0].log = trainersResult[0].log + '<p>' + log + '</p>'
+            trainersResult[0].log = trainersResult[0].log + log
           })
 
         res.status(200).json({trainerData: trainersResult});
@@ -172,3 +156,32 @@ export default async function getTrainers(
         res.status(500).send("Error fetching trainers");
     }
 }
+
+
+// function getRaceDatesResult(data) {
+//     const dom = new JSDOM(data);
+//     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("#maintable");
+//     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
+//         return raceResult.innerHTML
+//     });
+//     const fromContentHTML = raceResultArray[0];
+//     // const divHtmlContents = fromContentHTML.split("賽事日期")
+
+//     // console.log(divHtmlContents.length);
+
+//     // if (divHtmlContents.length <= 1) {
+//     //     console.log("Error: No Last Win Result found")
+//     //     return raceResultArray
+//     // }
+//     // const horseResultHtml = divHtmlContents[1]
+//     // console.log(horseResultHtml);
+//     const divHorseRaceHtml = fromContentHTML.split('<td colspan=\"3\" align=\"left\">第');
+
+//     if (divHorseRaceHtml.length <= 1) {
+//         console.log("Error: No Race Result found")
+//         return raceResultArray
+//     }
+//     //for testing at this moment
+//     return divHorseRaceHtml.slice(2, 10)
+      
+// }
