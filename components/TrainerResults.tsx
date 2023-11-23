@@ -4,6 +4,7 @@ import Trainer from "./Trainer";
 
 interface Result {
     trainerName: string;
+    trainerShortName: string;
     trainerWin: string;
     trainerHistory: [];
     log: string;

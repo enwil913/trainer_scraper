@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { JSDOM } from "jsdom";
 import TrainerResults from "../../components/TrainerResults";
+import { TrainersList_Const } from "../../components/Constants";
 
 
 //for meta race date meta data
@@ -42,9 +43,6 @@ function removeConsecutiveBlanks(str: string) {
   return str;
 }
 
-function checkTrainName({trainerName}) {
-    return trainerName !== 'No Trainer'
-}
 
 //get data functions
 function getDatesArray(data) {
@@ -69,25 +67,20 @@ function getRaceDatesResult(data) {
     return raceTrainersArray
 }
 
-
-
-
 function getTrainersList(data) {
     const dom = new JSDOM(data);
     const trainersTable : HTMLCollectionOf<Element> 
         = dom.window.document.querySelectorAll(".stable tr");
 
-    // const testTD : HTMLCollectionOf<Element> 
-    // = dom.window.document.querySelectorAll(".stable tr td");
-
     const trainers = Array.from(trainersTable, (trainer) => {
-        // console.log(trainer.innerHTML)
-        const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
-        const trainerInfoArr = trainerText.split("<td>");
-        let trainerName = 'No Trainer';
-        let trainerWin = 'No Trainer';
+        let trainerName = 'No Trainer'; //use by "checkTrainerName" to filter out the trainer
+        let trainerShortName = '';
+        let trainerWin = '';
         let trainerHistory = [];
         let log = ''
+
+        const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
+        const trainerInfoArr = trainerText.split("<td>");
 
         if (trainerInfoArr[5] !== undefined) {
             const firstIndex = trainerInfoArr[5].indexOf(">")
@@ -98,21 +91,31 @@ function getTrainersList(data) {
                 trainerWin = trainerInfoArr[1].substring(0, nextIndex);
             }
         }
-        return { //init the trainer data
+        return { //init the trainer data, should match with "let" at the beginning of this function
             trainerName,
+            trainerShortName,
             trainerWin,
             trainerHistory,
             log,
         };
     });
     //fitler the trainer and fill-in trainer details
-    const trainersResult = trainers.filter(checkTrainName);
+    const trainersResult = trainers.filter(checkTrainerName);
     for (var t in trainersResult) {
-        trainersResult[t].trainerHistory = [1, 2, 3];
+        TrainersList_Const.map((cTrainer) => {
+            trainersResult[t].trainerName = cTrainer.name == trainersResult[t].trainerName ? cTrainer.shortName : ''; 
+        })
+        // trainersResult[t].trainerHistory = [1, 2, 3];
     }
 
     return trainersResult
 }
+
+//for getTrainerList
+function checkTrainerName({trainerName}) {
+    return trainerName !== 'No Trainer'
+}
+
 
 export default async function getTrainers(
   req: NextApiRequest,
@@ -132,21 +135,12 @@ export default async function getTrainers(
             const dateSplitted = date.split('/')
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
-
+        //get 10 races results          
         //do one by one
         const raceAllDatesResultArray = [];
-        // raceAllDatesResultArray[0] = getRaceDatesResult(await getDatafromURL(raceDatesURL[0]));
-        // raceAllDatesResultArray[1] = getRaceDatesResult(await getDatafromURL(raceDatesURL[1]));
-        // raceAllDatesResultArray[2] = getRaceDatesResult(await getDatafromURL(raceDatesURL[2]));
-        // raceAllDatesResultArray[3] = getRaceDatesResult(await getDatafromURL(raceDatesURL[3]));
-        // raceAllDatesResultArray[4] = getRaceDatesResult(await getDatafromURL(raceDatesURL[4]));
-        //get 10 races results          
         for (let i=0; i<=9; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
         }
-        // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
-        // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-        // raceAllDatesResultArray[0] = raceDatesResultArray;
         
         //NOT working...review multiple axios "async await" 
         // //get race date result 
@@ -162,18 +156,22 @@ export default async function getTrainers(
               return iconv.decode(Buffer.from(data), 'big5')
             }]
           });    
-          const trainersResult = getTrainersList(cardList.data);
-          //for testing, log the result
-          trainersResult.map((trainer) => {
-            trainer.log = "||"
+        const trainersResult = getTrainersList(cardList.data);
+        //Set race day win result  
+        trainersResult.map((trainer) => {
+            let dayCount = 0;
             for (const raceDatesResultArray of raceAllDatesResultArray) {
+                let winCount = 0;
                 (raceDatesResultArray).map((trainerShortName) => {
+                    trainerShortName == trainer.trainerShortName ? winCount = winCount + 1 : winCount
                     trainer.log = trainer.log + trainerShortName
                 })
                 trainer.log = trainer.log + "||"
+                trainer.trainerHistory[dayCount] = winCount;
+            dayCount = dayCount + 1;
             }
         })
-
+    
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {

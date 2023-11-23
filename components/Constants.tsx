@@ -1,4 +1,4 @@
-export const trainersList = [
+export const TrainersList_Const = [
     {
       "id": 1, "name": "方嘉柏", "shortName": "方", "totalWin": 0,
       "winHistory": []

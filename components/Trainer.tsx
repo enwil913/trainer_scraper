@@ -7,10 +7,11 @@ const Trainer = ({ trainer }) => {
     return (
         <div key={trainer.trainerName} className='trainer'>
             <h3>{trainer.trainerName}</h3>
+            <h3>{trainer.trainerShortName}</h3>
             <p>{trainer.trainerWin}</p>  
             <p>{historyList}</p>  
-            <p>{trainer.log}</p>  
-      </div>
+            <p>{trainer.log}</p>
+        </div>
     )
   }
   
