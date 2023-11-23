@@ -165,9 +165,9 @@ export default async function getTrainers(
             for (const raceDatesResultArray of raceAllDatesResultArray) {
                 (raceDatesResultArray).map((trainerShortName) => {
                     trainer.log = trainer.log + trainerShortName
-                    trainer.log = "||"
                 })
-          }
+                trainer.log = trainer.log + "||"
+            }
         })
 
         res.status(200).json({trainerData: trainersResult});
