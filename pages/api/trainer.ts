@@ -173,7 +173,10 @@ export default async function getTrainers(
                 dayCount = dayCount + 1;
             }
         })
-        trainersResult.sort((a, b) => (a.trainerConsecutiveLoss >= b.trainerConsecutiveLoss ? 1 : 0));
+        trainersResult.sort((a, b) => {
+            return (a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? 1 : 
+                a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? -1 : 0)
+        });
     
         res.status(200).json({trainerData: trainersResult});
 
