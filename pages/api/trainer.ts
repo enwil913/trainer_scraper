@@ -135,10 +135,11 @@ export default async function getTrainers(
 
         //do one by one
         const raceAllDatesResultArray = []
-        raceAllDatesResultArray[0] = getRaceDatesResult(await getDatafromURL(raceDatesURL[0]))
+        const raceDatesResult = await getDatafromURL(raceDatesURL[0])
+        raceAllDatesResultArray[0] = getRaceDatesResult(raceDatesResult)
         // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
         //  raceAllDatesResultArray[0] = raceDatesResultArray
-
+        
         //NOT working...review multiple axios "async await" 
         // //get race date result 
         // const raceAllDatesResultsArray = raceDatesURL.map(getDatafromURL)
