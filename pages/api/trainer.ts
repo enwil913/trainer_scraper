@@ -157,14 +157,15 @@ export default async function getTrainers(
           });    
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
-          for (const raceDatesResultArray of raceAllDatesResultArray) {
-            trainersResult.map((trainer) => {
-                trainer.log ='';
+          trainersResult.map((trainer) => {
+            trainer.log = "<br>"
+            for (const raceDatesResultArray of raceAllDatesResultArray) {
                 (raceDatesResultArray).map((trainerShortName) => {
                     trainer.log = trainer.log + trainerShortName
                 })
-            })
           }
+        })
+
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
