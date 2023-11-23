@@ -168,9 +168,7 @@ export default async function getTrainers(
                     trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount] + 1 : trainer.trainerHistory[dayCount]
                     // trainer.log = trainer.log + trainerShortName
                 });
-                if (trainer.trainerConsecutiveLoss >= 0 ) {
-                    trainer.trainerConsecutiveLoss = (trainer.trainerHistory[dayCount] > 0) ? trainer.trainerConsecutiveLoss + 1 : -1;
-                }
+                trainer.trainerConsecutiveLoss = trainer.trainerHistory.findIndex((element) => element > 0)
                 // trainer.log = trainer.log + "||"
                 dayCount = dayCount + 1;
             }

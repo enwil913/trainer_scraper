@@ -6,8 +6,7 @@ const Trainer = ({ trainer }) => {
     const consecutiveLoss = trainer.trainerConsecutiveLoss == -1 ? 0 : trainer.trainerConsecutiveLoss; 
     return (
         <div key={trainer.trainerName} className='trainer'>
-            <h3>{trainer.trainerName}</h3>
-            <p>{trainer.trainerShortName}</p>
+            <h3>{trainer.trainerName}({trainer.trainerShortName})</h3>
             <p>{trainer.trainerWin}</p>  
             <p>{consecutiveLoss}</p>  
             <p>{historyList}</p>  
