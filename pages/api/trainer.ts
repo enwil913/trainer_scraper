@@ -165,7 +165,7 @@ export default async function getTrainers(
             for (const raceDatesResultArray of raceAllDatesResultArray) {
                 trainer.trainerHistory[dayCount] = 0;
                 (raceDatesResultArray).map((trainerShortName) => {
-                    // trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
+                    trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
                     trainer.log = trainer.log + trainerShortName
                 })
                 trainer.log = trainer.log + "||"
