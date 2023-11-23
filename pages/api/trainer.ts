@@ -169,10 +169,12 @@ export default async function getTrainers(
                     // trainer.log = trainer.log + trainerShortName
                 });
                 trainer.trainerConsecutiveLoss = trainer.trainerHistory.findIndex((element) => element > 0)
+                trainer.trainerConsecutiveLoss = (trainer.trainerConsecutiveLoss == -1) ? 10 : trainer.trainerConsecutiveLoss; 
                 // trainer.log = trainer.log + "||"
                 dayCount = dayCount + 1;
             }
         })
+        //sort the trainer list
         trainersResult.sort((a, b) => {
             return (a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? 1 : 
                 a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? -1 : 0)
