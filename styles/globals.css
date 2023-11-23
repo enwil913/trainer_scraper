@@ -23,8 +23,9 @@ a {
   text-align: center;
 }
 
+
 .container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 20px auto;
   overflow: auto;
   min-height: 300px;
@@ -33,7 +34,14 @@ a {
   border-radius: 8px;
 }
 
-/* new added */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
 .trainer {
   background: #f4f4f4;
   margin: 5px;

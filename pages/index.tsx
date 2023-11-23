@@ -1,19 +1,11 @@
-import Head from "next/head";
 import React from "react";
+import Header from "../components/Header";
 import TrainerResults from "../components/TrainerResults";
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>Trainer Scraper</title>
-        <meta
-          name="description"
-          content="Trainers"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <div className="container">
+      <Header title={'手影...'} version={'v1.xx'}/>
       <TrainerResults />
     </div>
   );
