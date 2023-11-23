@@ -134,13 +134,15 @@ export default async function getTrainers(
           });
 
         // for testing
-        // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
-        // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+        const raceAllDatesResultArray = []
+        const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
+        const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+        raceAllDatesResultArray[0] = raceDatesResultArray
 
-        //get race date result
-        const raceAllDatesResultsArray = raceDatesURL.map(getDatafromURL)
-        await Promise.all(raceAllDatesResultsArray);
-        
+        // //get race date result
+        // const raceAllDatesResultsArray = raceDatesURL.map(getDatafromURL)
+        // await Promise.all(raceAllDatesResultsArray);
+
         //get trainer card list
         const cardList = await axios.get(cardListURL, {
             responseType: 'arraybuffer',
@@ -151,7 +153,7 @@ export default async function getTrainers(
           });    
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
-          for (const raceDatesResultArray of raceAllDatesResultsArray) {
+          for (const raceDatesResultArray of raceAllDatesResultArray) {
             console.log(raceDatesResultArray)
             trainersResult.map(async (trainer) => {
                 trainer.log ='';
