@@ -137,6 +137,9 @@ export default async function getTrainers(
         const raceAllDatesResultArray = [];
         raceAllDatesResultArray[0] = getRaceDatesResult(await getDatafromURL(raceDatesURL[0]));
         raceAllDatesResultArray[1] = getRaceDatesResult(await getDatafromURL(raceDatesURL[1]));
+        raceAllDatesResultArray[2] = getRaceDatesResult(await getDatafromURL(raceDatesURL[2]));
+        raceAllDatesResultArray[3] = getRaceDatesResult(await getDatafromURL(raceDatesURL[3]));
+        raceAllDatesResultArray[4] = getRaceDatesResult(await getDatafromURL(raceDatesURL[4]));
         // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
         // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
         // raceAllDatesResultArray[0] = raceDatesResultArray;
@@ -158,10 +161,11 @@ export default async function getTrainers(
           const trainersResult = getTrainersList(cardList.data);
           //for testing, log the result
           trainersResult.map((trainer) => {
-            trainer.log = "<br>"
+            trainer.log = "||"
             for (const raceDatesResultArray of raceAllDatesResultArray) {
                 (raceDatesResultArray).map((trainerShortName) => {
                     trainer.log = trainer.log + trainerShortName
+                    trainer.log = "||"
                 })
           }
         })
