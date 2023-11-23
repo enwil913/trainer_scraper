@@ -27,9 +27,9 @@ async function getDatafromURL(url) {
 
 function getEveryNth(arr, nth) {
     const result = [];
-  
+    const bDivisble =  ((arr.length % nth) == 0) 
     for (let index = 0; index < arr.length; index += nth) {
-      result.push(arr[index]);
+      bDivisble ? result.push(arr[index]) : result.push('XX');
     }
     return result;
   }
