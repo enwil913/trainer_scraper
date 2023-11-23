@@ -134,9 +134,11 @@ export default async function getTrainers(
           });
 
         //do one by one
-        const raceAllDatesResultArray = []
-        const raceDatesResult = await getDatafromURL(raceDatesURL[0])
-        raceAllDatesResultArray[0] = getRaceDatesResult(raceDatesResult)
+        const raceAllDatesResultArray = [];
+        const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
+        raceAllDatesResultArray[0] = getRaceDatesResult(raceDatesResult);
+        console.log(raceAllDatesResultArray.length);
+        
         // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
         //  raceAllDatesResultArray[0] = raceDatesResultArray
         
