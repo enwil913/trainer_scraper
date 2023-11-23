@@ -78,6 +78,10 @@ export const TrainersList_Const = [
     {
       "id": 20, "name": "鄭俊偉", "shortName": "鄭", "totalWin": 0,
       "winHistory": []
+    },
+    {
+      "id": 21, "name": "葉楚航", "shortName": "葉", "totalWin": 0,
+      "winHistory": []
     }
   ]
 
