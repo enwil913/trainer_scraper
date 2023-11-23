@@ -16,7 +16,7 @@ a {
 }
 
 .title {
-  background-color: red;
+  background-color: steelblue;
   color: #ffffff;
   margin-top: 0;
   padding: 0.2em;
@@ -25,11 +25,11 @@ a {
 
 .container {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 20px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
+  border: 2px solid steelblue;
+  padding: 10px;
   border-radius: 8px;
 }
 
@@ -38,7 +38,6 @@ a {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
-  cursor: pointer;
 }
 
 .trainer h4 {
