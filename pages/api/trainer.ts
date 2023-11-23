@@ -173,7 +173,7 @@ export default async function getTrainers(
             }
             trainer.trainerConsecutiveLoss = trainer.trainerHistory.findIndex((element) => element > 0)
             trainer.trainerConsecutiveLoss = (trainer.trainerConsecutiveLoss == -1) ? dayCount : trainer.trainerConsecutiveLoss; 
-    })
+        })
         //sort the trainer list
         trainersResult.sort((a, b) => {
             return (a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? 1 : 
