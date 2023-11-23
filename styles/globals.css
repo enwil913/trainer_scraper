@@ -24,24 +24,21 @@ a {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
+
 /* new added */
 .trainer {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
-}
-
-.trainer.reminder {
-  border-left: 5px solid green;
 }
 
 .trainer h4 {
@@ -53,6 +50,10 @@ a {
 .trainer p {
   text-align: left;
 }
+
+
+
+
 
 
 .lds-hourglass {
