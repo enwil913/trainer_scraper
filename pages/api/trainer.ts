@@ -103,7 +103,9 @@ function getTrainersList(data) {
     const trainersResult = trainers.filter(checkTrainerName);
     for (var t in trainersResult) {
         TrainersList_Const.map((cTrainer) => {
-            trainersResult[t].trainerName = cTrainer.name == trainersResult[t].trainerName ? cTrainer.shortName : ''; 
+            console.log(cTrainer.name)
+            console.log(trainersResult[t].trainerName) 
+            trainersResult[t].trainerShortName = (cTrainer.name == trainersResult[t].trainerName) ? cTrainer.shortName : ''; 
         })
         // trainersResult[t].trainerHistory = [1, 2, 3];
     }
