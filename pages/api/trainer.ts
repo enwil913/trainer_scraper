@@ -176,8 +176,8 @@ export default async function getTrainers(
     })
         //sort the trainer list
         trainersResult.sort((a, b) => {
-            return (a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? 1 : 
-                a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? -1 : 0)
+            return (a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? 1 : 
+                a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? -1 : 0)
         });
     
         res.status(200).json({trainerData: trainersResult});
