@@ -159,19 +159,19 @@ export default async function getTrainers(
             }]
           });    
         const trainersResult = getTrainersList(cardList.data);
-        // //Set race day win result  
-        // trainersResult.map((trainer) => {
-        //     let dayCount = 0;
-        //     for (const raceDatesResultArray of raceAllDatesResultArray) {
-        //         trainer.trainerHistory[dayCount] = 0;
-        //         (raceDatesResultArray).map((trainerShortName) => {
-        //             trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
-        //             trainer.log = trainer.log + trainerShortName
-        //         })
-        //         trainer.log = trainer.log + "||"
-        //     dayCount = dayCount + 1;
-        //     }
-        // })
+        //Set race day win result  
+        trainersResult.map((trainer) => {
+            let dayCount = 0;
+            for (const raceDatesResultArray of raceAllDatesResultArray) {
+                trainer.trainerHistory[dayCount] = 0;
+                (raceDatesResultArray).map((trainerShortName) => {
+                    // trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
+                    trainer.log = trainer.log + trainerShortName
+                })
+                trainer.log = trainer.log + "||"
+            dayCount = dayCount + 1;
+            }
+        })
     
         res.status(200).json({trainerData: trainersResult});
 
