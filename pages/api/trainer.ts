@@ -24,6 +24,7 @@ async function getDatafromURL(url) {
     return page.data
 }
 
+
 function getEveryNth(arr, nth) {
     const result = [];
   
@@ -135,13 +136,11 @@ export default async function getTrainers(
         // for testing
         // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
         // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-          //get race date result
-          const raceAllDatesResultsArray = raceDatesURL.map(async (url)=> {
-            const raceDatesResult = await getDatafromURL(url);
-            const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-            return raceDatesResultArray
-          });
 
+        //get race date result
+        const raceAllDatesResultsArray = raceDatesURL.map(getDatafromURL)
+        await Promise.all(raceAllDatesResultsArray);
+        
         //get trainer card list
         const cardList = await axios.get(cardListURL, {
             responseType: 'arraybuffer',
