@@ -7,6 +7,7 @@ interface Result {
     trainerShortName: string;
     trainerWin: string;
     trainerHistory: [];
+    trainerConsecutiveLoss: number;
     log: string;
 }
 

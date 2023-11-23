@@ -77,6 +77,7 @@ function getTrainersList(data) {
         let trainerShortName = '';
         let trainerWin = '';
         let trainerHistory = [];
+        let trainerConsecutiveLoss = 0
         let log = ''
 
         const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
@@ -96,6 +97,7 @@ function getTrainersList(data) {
             trainerShortName,
             trainerWin,
             trainerHistory,
+            trainerConsecutiveLoss,
             log,
         };
     });
@@ -165,7 +167,10 @@ export default async function getTrainers(
                 (raceDatesResultArray).map((trainerShortName) => {
                     trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount] + 1 : trainer.trainerHistory[dayCount]
                     // trainer.log = trainer.log + trainerShortName
-                })
+                });
+                if (trainer.trainerConsecutiveLoss >= 0 ) {
+                    trainer.trainerConsecutiveLoss = (trainer.trainerHistory[dayCount] > 0) ? trainer.trainerConsecutiveLoss + 1 : -1;
+                }
                 // trainer.log = trainer.log + "||"
                 dayCount = dayCount + 1;
             }
