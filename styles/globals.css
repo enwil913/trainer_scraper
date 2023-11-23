@@ -44,37 +44,16 @@ a {
   border-left: 5px solid green;
 }
 
-.trainer h3 {
+.trainer h4 {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
-.race-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 20em;
-  background: #ffffff;
-  border: 4px red solid;
-  border-left: 0;
-  border-bottom: 0;
-  border-top-right-radius: 3em;
+.trainer p {
+  text-align: left;
 }
-.race-card_date {
-  color: #464646;
-  font-weight: 900;
-  font-size: 18px;
-}
-.race-card_venue {
-  width: 100%;
-  text-align: center;
-  background-color: red;
-  color: #ffffff;
-  margin: 0;
-  border-top-right-radius: .5em;
-}
+
 
 .lds-hourglass {
   display: inline-block; 

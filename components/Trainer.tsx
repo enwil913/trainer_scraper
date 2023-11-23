@@ -7,11 +7,11 @@ const Trainer = ({ trainer }) => {
 
     return (
         <div key={trainer.trainerName} className='trainer'>
-            <h3>
-                {trainer.trainerName} {trainerShortName} 
-                連輸: {trainer.trainerConsecutiveLoss}  
-                總頭馬: {trainer.trainerWin} 
-            </h3>
+            <h4>
+                <div>{trainer.trainerName} {trainerShortName}</div> 
+                <div>連輸: {trainer.trainerConsecutiveLoss}</div>  
+                <div>總頭馬: {trainer.trainerWin}</div> 
+            </h4>
             <p>近十場頭馬(左至右): {historyList}</p>  
             <p>{trainer.log}</p>
         </div>
