@@ -8,10 +8,10 @@ const Trainer = ({ trainer }) => {
         <div key={trainer.trainerName} className='trainer'>
             <h3>
                 {trainer.trainerName} ({trainer.trainerShortName}) 
-                馬房 (冠): {trainer.trainerWin} 
                 連輸: {consecutiveLoss}  
+                馬房(總頭馬): {trainer.trainerWin} 
             </h3>
-            <p>羸馬記錄(左至右): {historyList}</p>  
+            <p>近十場頭馬(左至右): {historyList}</p>  
             <p>{trainer.log}</p>
         </div>
     )
