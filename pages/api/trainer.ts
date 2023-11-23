@@ -141,7 +141,7 @@ export default async function getTrainers(
         // raceAllDatesResultArray[3] = getRaceDatesResult(await getDatafromURL(raceDatesURL[3]));
         // raceAllDatesResultArray[4] = getRaceDatesResult(await getDatafromURL(raceDatesURL[4]));
         //get 10 races results          
-        for (let i=0; i<9; i++) {
+        for (let i=0; i<=9; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
         }
         // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
