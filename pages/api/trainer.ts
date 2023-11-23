@@ -140,7 +140,8 @@ export default async function getTrainers(
         // raceAllDatesResultArray[2] = getRaceDatesResult(await getDatafromURL(raceDatesURL[2]));
         // raceAllDatesResultArray[3] = getRaceDatesResult(await getDatafromURL(raceDatesURL[3]));
         // raceAllDatesResultArray[4] = getRaceDatesResult(await getDatafromURL(raceDatesURL[4]));
-        for (let i=0; i<5; i++) {
+        //get 10 races results          
+        for (let i=0; i<9; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
         }
         // const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
