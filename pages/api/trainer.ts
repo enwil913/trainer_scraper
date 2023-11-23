@@ -133,15 +133,17 @@ export default async function getTrainers(
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
 
-        // for testing
+        //do one by one
         const raceAllDatesResultArray = []
-        const raceDatesResult = await getDatafromURL(raceDatesURL[0]);
-        const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
-        raceAllDatesResultArray[0] = raceDatesResultArray
+        raceAllDatesResultArray[0] = getRaceDatesResult(await getDatafromURL(raceDatesURL[0]))
+        // const raceDatesResultArray = getRaceDatesResult(raceDatesResult);
+        //  raceAllDatesResultArray[0] = raceDatesResultArray
 
-        // //get race date result
+        //NOT working...review multiple axios "async await" 
+        // //get race date result 
         // const raceAllDatesResultsArray = raceDatesURL.map(getDatafromURL)
         // await Promise.all(raceAllDatesResultsArray);
+        //end NOT working 
 
         //get trainer card list
         const cardList = await axios.get(cardListURL, {
