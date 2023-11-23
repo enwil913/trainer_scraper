@@ -168,12 +168,12 @@ export default async function getTrainers(
                     trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount] + 1 : trainer.trainerHistory[dayCount]
                     // trainer.log = trainer.log + trainerShortName
                 });
-                trainer.trainerConsecutiveLoss = trainer.trainerHistory.findIndex((element) => element > 0)
-                trainer.trainerConsecutiveLoss = (trainer.trainerConsecutiveLoss == -1) ? 10 : trainer.trainerConsecutiveLoss; 
                 // trainer.log = trainer.log + "||"
                 dayCount = dayCount + 1;
             }
-        })
+            trainer.trainerConsecutiveLoss = trainer.trainerHistory.findIndex((element) => element > 0)
+            trainer.trainerConsecutiveLoss = (trainer.trainerConsecutiveLoss == -1) ? dayCount : trainer.trainerConsecutiveLoss; 
+    })
         //sort the trainer list
         trainersResult.sort((a, b) => {
             return (a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? 1 : 
