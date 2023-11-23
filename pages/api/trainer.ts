@@ -99,13 +99,13 @@ function getTrainersList(data) {
             log,
         };
     });
-    //fitler the trainer and fill-in trainer details
+    //fitler the trainer and fill-in trainer details (i.e. trainerShortName)
     const trainersResult = trainers.filter(checkTrainerName);
     for (var t in trainersResult) {
         TrainersList_Const.map((cTrainer) => {
             console.log(cTrainer.name)
             console.log(trainersResult[t].trainerName) 
-            trainersResult[t].trainerShortName = (cTrainer.name == trainersResult[t].trainerName) ? cTrainer.shortName : ''; 
+            trainersResult[t].trainerShortName = (cTrainer.name == trainersResult[t].trainerName) ? cTrainer.shortName : trainersResult[t].trainerShortName; 
         })
         // trainersResult[t].trainerHistory = [1, 2, 3];
     }
@@ -163,13 +163,12 @@ export default async function getTrainers(
         // trainersResult.map((trainer) => {
         //     let dayCount = 0;
         //     for (const raceDatesResultArray of raceAllDatesResultArray) {
-        //         let winCount = 0;
+        //         trainer.trainerHistory[dayCount] = 0;
         //         (raceDatesResultArray).map((trainerShortName) => {
-        //             trainerShortName == trainer.trainerShortName ? winCount = winCount + 1 : winCount
+        //             trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
         //             trainer.log = trainer.log + trainerShortName
         //         })
         //         trainer.log = trainer.log + "||"
-        //         trainer.trainerHistory[dayCount] = winCount;
         //     dayCount = dayCount + 1;
         //     }
         // })
