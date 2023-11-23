@@ -103,8 +103,6 @@ function getTrainersList(data) {
     const trainersResult = trainers.filter(checkTrainerName);
     for (var t in trainersResult) {
         TrainersList_Const.map((cTrainer) => {
-            console.log(cTrainer.name)
-            console.log(trainersResult[t].trainerName) 
             trainersResult[t].trainerShortName = (cTrainer.name == trainersResult[t].trainerName) ? cTrainer.shortName : trainersResult[t].trainerShortName; 
         })
         // trainersResult[t].trainerHistory = [1, 2, 3];
@@ -165,11 +163,13 @@ export default async function getTrainers(
             for (const raceDatesResultArray of raceAllDatesResultArray) {
                 trainer.trainerHistory[dayCount] = 0;
                 (raceDatesResultArray).map((trainerShortName) => {
-                    trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount]++ : trainer.trainerHistory[dayCount]
+                    console.log(trainerShortName)
+                    console.log(trainer.trainerShortName)
+                    trainer.trainerHistory[dayCount] = (trainerShortName == trainer.trainerShortName) ? trainer.trainerHistory[dayCount] + 1 : trainer.trainerHistory[dayCount]
                     trainer.log = trainer.log + trainerShortName
                 })
                 trainer.log = trainer.log + "||"
-            dayCount = dayCount + 1;
+                dayCount = dayCount + 1;
             }
         })
     
