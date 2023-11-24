@@ -5,6 +5,7 @@ import { JSDOM } from "jsdom";
 import { TrainersList_Const } from "../../components/Constants";
 import { TrainersSelfMsg_Const } from "../../components/Constants";
 import { TrainersBetMsg_Const } from "../../components/Constants";
+import TrainerResults from "../../components/TrainerResults";
 
 
 //for meta race date meta data
@@ -186,7 +187,7 @@ export default async function getTrainers(
         trainersResult.map((trainer) => {
             trainer.log = TrainersSelfMsg_Const[trainer.trainerShortName];
             if (trainer.log !== "弱馬房, 放棄"){
-                trainer.log = trainer.log + "..." + TrainersBetMsg_Const[trainer.trainerShortName];
+                trainer.log = trainer.log + "..." + TrainersBetMsg_Const[trainer.trainerConsecutiveLoss];
             } 
         })
 
@@ -194,7 +195,17 @@ export default async function getTrainers(
 
     } catch (error) {
         console.error(error);
-        res.status(500).send("Error fetching trainers");
+        const trainer = {
+            trainerName: '',
+            trainerShortName : '',
+            trainerWin: '',
+            trainerHistory : '',
+            trainerConsecutiveLoss : '',
+            log : 'Fetching (trainers) is not successful! Please try again',            
+        };
+        const errorResults = [trainer]
+        res.status(200).json({trainerData: errorResults});
+        // res.status(500).send("Error fetching trainers");
     }
 }
 
