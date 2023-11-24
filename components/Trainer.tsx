@@ -10,7 +10,7 @@ const Trainer = ({ trainer }) => {
             <h4>
                 <div>{trainer.trainerName} {trainerShortName}</div> 
                 <div>馬評: <span style={(trainer.trainerConsecutiveLoss >= 3) ? {color: 'red'} : 
-                (trainer.trainerConsecutiveLoss == 2) ? {color: "green"} : {}}>{trainer.log}</span></div>
+                (trainer.trainerConsecutiveLoss == 2) ? {color: "royalblue"} : {}}>{trainer.log}</span></div>
                 <div>總頭馬: {trainer.trainerWin}</div> 
             </h4>
             <p>
