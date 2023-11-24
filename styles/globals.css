@@ -37,11 +37,10 @@ a {
 
 .btn {
   display: inline-block;
-  height: 8px;
   background: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 10px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -50,6 +49,9 @@ a {
   font-family: inherit;
 }
 
+.trainerMenu {
+  background: #d8e2eb;
+}
 
 /* trainer */
 .trainer {

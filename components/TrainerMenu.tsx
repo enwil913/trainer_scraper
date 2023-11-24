@@ -7,7 +7,7 @@ const TrainerMenu = () => {
     }
 
     return (
-    <div>
+    <div className='trainerMenu'>
         <Button color='green' text='排位表' onClick={onClick}/>      
         <Button color='blue' text='強馬房' onClick={onClick}/>      
         <Button color='blue' text='大馬房' onClick={onClick}/>      
