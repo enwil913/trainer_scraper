@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { JSDOM } from "jsdom";
-// import TrainerResults from "../../components/TrainerResults";
 import { TrainersList_Const } from "../../components/Constants";
 import { TrainersSelfMsg_Const } from "../../components/Constants";
 import { TrainersBetMsg_Const } from "../../components/Constants";
@@ -221,30 +220,4 @@ export default async function getTrainers(
 }
 
 
-// function getRaceDatesResult(data) {
-//     const dom = new JSDOM(data);
-//     const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll("#maintable");
-//     const raceResultArray = Array.from(raceResultTable, (raceResult) => {
-//         return raceResult.innerHTML
-//     });
-//     const fromContentHTML = raceResultArray[0];
-//     // const divHtmlContents = fromContentHTML.split("賽事日期")
 
-//     // console.log(divHtmlContents.length);
-
-//     // if (divHtmlContents.length <= 1) {
-//     //     console.log("Error: No Last Win Result found")
-//     //     return raceResultArray
-//     // }
-//     // const horseResultHtml = divHtmlContents[1]
-//     // console.log(horseResultHtml);
-//     const divHorseRaceHtml = fromContentHTML.split('<td colspan=\"3\" align=\"left\">第');
-
-//     if (divHorseRaceHtml.length <= 1) {
-//         console.log("Error: No Race Result found")
-//         return raceResultArray
-//     }
-//     //for testing at this moment
-//     return divHorseRaceHtml.slice(2, 10)
-      
-// }
