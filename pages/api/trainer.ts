@@ -205,6 +205,7 @@ export default async function getTrainers(
 
     } catch (error) {
         console.error(error);
+        console.error("1. Trainer fetch");
         const trainer = {
             trainerName: '',
             trainerShortName : '',

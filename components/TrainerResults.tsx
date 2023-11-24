@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import TrainerMenu from "./TrainerMenu";
 import Trainer from "./Trainer";
 
 interface Result {
@@ -30,6 +31,7 @@ const TrainerResults: React.FC = () => {
 
   return (
       <div>
+        <TrainerMenu />
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <Trainer key={trainer.trainerName} trainer={trainer}/>
