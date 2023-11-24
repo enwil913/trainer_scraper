@@ -58,8 +58,6 @@ a {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
-  font-size: 13px;
-  font-family: inherit;
 }
 
 .trainer h4 {
@@ -72,6 +70,7 @@ a {
   display: flex;
   justify-content: space-around;
   text-align: left;
+  font-size: 15px;
 }
 
 
