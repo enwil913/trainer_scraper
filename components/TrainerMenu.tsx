@@ -7,8 +7,12 @@ const TrainerMenu = () => {
     }
 
     return (
-    <div className='trainer'>
+    <div>
         <Button color='green' text='排位表' onClick={onClick}/>      
+        <Button color='blue' text='強馬房' onClick={onClick}/>      
+        <Button color='blue' text='大馬房' onClick={onClick}/>      
+        <Button color='blue' text='中等馬房' onClick={onClick}/>      
+        <Button color='blue' text='新仔馬房' onClick={onClick}/>      
     </div>
   )
 }

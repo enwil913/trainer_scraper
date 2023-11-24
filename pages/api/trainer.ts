@@ -196,7 +196,7 @@ export default async function getTrainers(
         //find trainer message
         trainersResult.map((trainer) => {
             trainer.log = TrainersSelfMsg_Const[trainer.trainerShortName];
-            if (trainer.log !== "弱馬房, 放棄"){
+            if (trainer.log !== "弱馬房, 放棄,放棄"){
                 trainer.log = trainer.log + "..." + TrainersBetMsg_Const[trainer.trainerConsecutiveLoss];
             } 
         })
