@@ -14,6 +14,10 @@ interface Result {
 
 interface ResultResponse {
     trainerData: Result[];
+};
+
+const showComingRace = () => {
+  console.log('Show coming race!')
 }
 
 const TrainerResults: React.FC = () => {
@@ -31,7 +35,7 @@ const TrainerResults: React.FC = () => {
 
   return (
       <div>
-        <TrainerMenu />
+        <TrainerMenu showComingRace={showComingRace}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <Trainer key={trainer.trainerName} trainer={trainer}/>
