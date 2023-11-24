@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { JSDOM } from "jsdom";
-import TrainerResults from "../../components/TrainerResults";
+// import TrainerResults from "../../components/TrainerResults";
 import { TrainersList_Const } from "../../components/Constants";
+import { TrainersSelfMsg_Const } from "../../components/Constants";
+import { TrainersBetMsg_Const } from "../../components/Constants";
 
 
 //for meta race date meta data
@@ -179,7 +181,15 @@ export default async function getTrainers(
             return (a.trainerConsecutiveLoss < b.trainerConsecutiveLoss ? 1 : 
                 a.trainerConsecutiveLoss > b.trainerConsecutiveLoss ? -1 : 0)
         });
-    
+   
+        //find trainer message
+        trainersResult.map((trainer) => {
+            trainer.log = TrainersSelfMsg_Const[trainer.trainerShortName];
+            if (trainer.log !== "弱馬房, 放棄"){
+                trainer.log = trainer.log + "..." + TrainersBetMsg_Const[trainer.trainerShortName];
+            } 
+        })
+
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {

@@ -36,6 +36,7 @@ a {
 }
 
 
+/* trainer */
 .trainer {
   background: #f4f4f4;
   margin: 5px;
@@ -54,9 +55,7 @@ a {
 
 
 
-
-
-
+/* hourglass indicator */
 .lds-hourglass {
   display: inline-block; 
   position: relative;
