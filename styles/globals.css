@@ -50,6 +50,8 @@ a {
 }
 
 .trainer p {
+  display: flex;
+  justify-content: space-between;
   text-align: left;
 }
 

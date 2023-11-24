@@ -9,11 +9,13 @@ const Trainer = ({ trainer }) => {
         <div key={trainer.trainerName} className='trainer'>
             <h4>
                 <div>{trainer.trainerName} {trainerShortName}</div> 
-                <div>連輸: {trainer.trainerConsecutiveLoss}</div>  
+                <div style={(trainer.trainerConsecutiveLoss >= 3) ? {color: 'red'} : {}}>{trainer.log}</div>
                 <div>總頭馬: {trainer.trainerWin}</div> 
             </h4>
-            <p>近十場頭馬(左至右): {historyList}</p>  
-            <p style={(trainer.trainerConsecutiveLoss >= 3) ? {color: 'red'} : {}}>{trainer.log}</p>
+            <p>
+                <div>連輸: {trainer.trainerConsecutiveLoss}</div>  
+                <div>近十場頭馬(左至右): {historyList}</div>
+            </p>  
         </div>
     )
   }
