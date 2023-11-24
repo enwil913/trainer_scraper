@@ -18,14 +18,20 @@ const localResultURLPostfix  = "/rjratg0001x0.html"
 
 
 async function getDatafromURL(url) {
-    const page = await axios.get(url, {
-        responseType: 'arraybuffer',
-        transformResponse: [function (data) {
-          const iconv = require('iconv-lite')
-          return iconv.decode(Buffer.from(data), 'big5')
-        }]
-      });
-    return page.data
+    try {
+        const page = await axios.get(url, {
+            responseType: 'arraybuffer',
+            transformResponse: [function (data) {
+              const iconv = require('iconv-lite')
+              return iconv.decode(Buffer.from(data), 'big5')
+            }]
+          });
+        return page.data
+    
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 
@@ -46,7 +52,6 @@ function removeConsecutiveBlanks(str: string) {
   return str;
 }
 
-
 //get data functions
 function getDatesArray(data) {
     const dom = new JSDOM(data);
@@ -60,14 +65,19 @@ function getDatesArray(data) {
 }
 
 function getRaceDatesResult(data) {
-    const dom = new JSDOM(data);
-    const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('.stableB a[href*="stable_view.cgi"]');
-    const raceResultArray = Array.from(raceResultTable, (date) => {
-        return date.textContent;
-    });
-    const raceTrainersArray = getEveryNth(raceResultArray, 4);    
-    //for testing at this moment
-    return raceTrainersArray
+    try {
+        const dom = new JSDOM(data);
+        const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('.stableB a[href*="stable_view.cgi"]');
+        const raceResultArray = Array.from(raceResultTable, (date) => {
+            return date.textContent;
+        });
+        const raceTrainersArray = getEveryNth(raceResultArray, 4);    
+        //for testing at this moment
+        return raceTrainersArray
+    }
+    catch (error) {
+        throw error;
+    }
 }
 
 function getTrainersList(data) {
