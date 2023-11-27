@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TrainerMenu from "./TrainerMenu";
 import Trainer from "./Trainer";
-import TrainerCardList from "./TrainerCardList";
 
 
-interface TrainerResult {
+interface Result {
     trainerName: string;
     trainerShortName: string;
     trainerWin: string;
@@ -15,7 +14,7 @@ interface TrainerResult {
 }
 
 interface ResultResponse {
-    trainerData: TrainerResult[];
+    trainerData: Result[];
 };
 
 const showComingRace = () => {
@@ -23,7 +22,7 @@ const showComingRace = () => {
 }
 
 const TrainerResults: React.FC = () => {
-  const [trainerData, setTrainerData] = useState<TrainerResult[]>([]);
+  const [trainerData, setTrainerData] = useState<Result[]>([]);
 
   useEffect(() => {
     const fetchTrainerData = async () => {
