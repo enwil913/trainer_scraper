@@ -40,7 +40,7 @@ const TrainerResults: React.FC = () => {
       <div>
         <p>Loading Error!</p>
         <p>{err}</p>
-        <p>{err}</p>
+        <p>111</p>
       </div>
     )
   }
