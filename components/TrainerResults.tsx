@@ -21,18 +21,44 @@ const showComingRace = () => {
   console.log('Show coming race!')
 }
 
+
 const TrainerResults: React.FC = () => {
   const [trainerData, setTrainerData] = useState<Result[]>([]);
+  const [error, setError] = useState(null)
+
+
+  //Set views
+  const setTrainerView = () => {
+    return (
+      <p>Loading page!</p>
+    )
+   }
+
+  
+  const setErrorView = () => {
+    return (
+      <p>Loading Error!</p>
+    )
+  }
+
 
   useEffect(() => {
-    const fetchTrainerData = async () => {
-      const { data }  = await axios.get<ResultResponse>(
-        `${window.location.href}/api/trainer`
-      );
-      setTrainerData(data.trainerData); 
-    };
-    fetchTrainerData();
+    try {
+      const fetchTrainerData = async () => {
+        const { data }  = await axios.get<ResultResponse>(
+          `${window.location.href}/api/trainer`
+        );
+        setTrainerData(data.trainerData); 
+      };
+      fetchTrainerData();
+  
+    }
+    catch (err)
+    {
+      setError(err)
+    }
   }, []);
+
 
   return (
       <div>
@@ -44,6 +70,7 @@ const TrainerResults: React.FC = () => {
         ) : (
           <div className="lds-hourglass"></div>
         )}
+        { error ?  setTrainerView() : setErrorView() }
       </div>
   );
 };
