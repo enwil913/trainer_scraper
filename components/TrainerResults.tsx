@@ -73,7 +73,7 @@ const TrainerResults: React.FC = () => {
         ) : (
           <div className="lds-hourglass"></div>
         )}
-        { error ?  setTrainerView() : setErrorView() }
+        { error ?  setTrainerView() : setErrorView(error) }
       </div>
   );
 };
