@@ -35,9 +35,12 @@ const TrainerResults: React.FC = () => {
    }
 
   
-  const setErrorView = () => {
+  const setErrorView = (err) => {
     return (
-      <p>Loading Error!</p>
+      <div>
+        <p>Loading Error!</p>
+        <p>{err}</p>
+      </div>
     )
   }
 
