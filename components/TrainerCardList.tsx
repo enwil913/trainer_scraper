@@ -2,7 +2,7 @@ import React from 'react'
 
 const TrainerCardList = ({trainer}) => {
   return (
-    <div>
+    <div key={trainer.trainerName} >
       Show Trainer Card List
     </div>
   )
