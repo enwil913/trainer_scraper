@@ -118,7 +118,6 @@ function getTrainersList(data) {
         TrainersList_Const.map((cTrainer) => {
             trainersResult[t].trainerShortName = (cTrainer.name == trainersResult[t].trainerName) ? cTrainer.shortName : trainersResult[t].trainerShortName; 
         })
-        // trainersResult[t].trainerHistory = [1, 2, 3];
     }
 
     return trainersResult
@@ -198,23 +197,11 @@ export default async function getTrainers(
                 trainer.log = trainer.log + "..." + TrainersBetMsg_Const[trainer.trainerConsecutiveLoss];
             } 
         })
-
         res.status(200).json({trainerData: trainersResult});
 
     } catch (error) {
         console.error(error);
-        console.error("1. Trainer fetch");
-        const trainer = {
-            trainerName: '',
-            trainerShortName : '',
-            trainerWin: '',
-            trainerHistory : '',
-            trainerConsecutiveLoss : '',
-            log : 'Fetching (trainers) is not successful! Please try again',            
-        };
-        const errorResults = [trainer]
-        res.status(200).json({trainerData: errorResults});
-        // res.status(500).send("Error fetching trainers");
+        res.status(500).send("Error fetching trainers");
     }
 }
 
