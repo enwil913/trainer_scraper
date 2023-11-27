@@ -5,7 +5,7 @@ import Trainer from "./Trainer";
 import TrainerCardList from "./TrainerCardList";
 
 
-interface Result {
+interface TrainerResult {
     trainerName: string;
     trainerShortName: string;
     trainerWin: string;
@@ -15,7 +15,7 @@ interface Result {
 }
 
 interface ResultResponse {
-    trainerData: Result[];
+    trainerData: TrainerResult[];
 };
 
 const showComingRace = () => {
@@ -23,7 +23,7 @@ const showComingRace = () => {
 }
 
 const TrainerResults: React.FC = () => {
-  const [trainerData, setTrainerData] = useState<Result[]>([]);
+  const [trainerData, setTrainerData] = useState<TrainerResult[]>([]);
 
   useEffect(() => {
     const fetchTrainerData = async () => {
@@ -42,7 +42,7 @@ const TrainerResults: React.FC = () => {
           trainerData.map((trainer) => (
             <div>
               <Trainer key={trainer.trainerName} trainer={trainer}/>
-              <TrainerCardList />
+              <TrainerCardList key={trainer.trainerName} trainer={trainer}/>
             </div>  
             ))
         ) : (
