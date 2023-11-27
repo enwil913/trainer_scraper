@@ -30,17 +30,15 @@ const TrainerResults: React.FC = () => {
   //Set views
   const setTrainerView = () => {
     return (
-      <p>Loading page!</p>
+      <h2>Loading...</h2>
     )
    }
 
   
-  const setErrorView = (err) => {
+  const setErrorView = () => {
     return (
       <div>
-        <p>Loading Error!</p>
-        <p>{err}</p>
-        <p>111</p>
+        <h2>Loading Error! Please reload the page!</h2>
       </div>
     )
   }
@@ -55,11 +53,10 @@ const TrainerResults: React.FC = () => {
         setTrainerData(data.trainerData); 
       };
       fetchTrainerData();
-      // setError(null)
     }
     catch (err)
     {
-      setError(null)
+      setError('Loading error')
     }
   }, []);
 
@@ -74,7 +71,7 @@ const TrainerResults: React.FC = () => {
         ) : (
           <div className="lds-hourglass"></div>
         )}
-        { error ?  setTrainerView() : setErrorView(error) }
+        { error === 'No error' ?  setTrainerView() : setErrorView() }
       </div>
   );
 };
