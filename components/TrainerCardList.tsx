@@ -1,8 +1,9 @@
 import React from 'react'
 
-const TrainerCardList = ({trainer}) => {
+
+const TrainerCardList = ({ trainer }) => {
   return (
-    <div key={trainer.trainerName} >
+    <div>
       Show Trainer Card List
     </div>
   )

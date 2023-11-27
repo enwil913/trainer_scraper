@@ -42,7 +42,6 @@ const TrainerResults: React.FC = () => {
           trainerData.map((trainer) => (
             <div>
               <Trainer key={trainer.trainerName} trainer={trainer}/>
-              <TrainerCardList key={trainer.trainerName} trainer={trainer}/>
             </div>  
             ))
         ) : (
