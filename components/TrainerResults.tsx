@@ -24,7 +24,7 @@ const showComingRace = () => {
 
 const TrainerResults: React.FC = () => {
   const [trainerData, setTrainerData] = useState<Result[]>([]);
-  const [error, setError] = useState('this is error')
+  const [error, setError] = useState('No error')
 
 
   //Set views
@@ -59,7 +59,7 @@ const TrainerResults: React.FC = () => {
     }
     catch (err)
     {
-      setError("this is error")
+      setError(null)
     }
   }, []);
 
