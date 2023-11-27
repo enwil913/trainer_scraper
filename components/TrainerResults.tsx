@@ -28,7 +28,7 @@ const TrainerResults: React.FC = () => {
 
 
   //Set views
-  const setTrainerView = () => {
+  const setLoadingView = () => {
     return (
       <h2>Loading...</h2>
     )
@@ -43,21 +43,20 @@ const TrainerResults: React.FC = () => {
     )
   }
 
-
   useEffect(() => {
-    try {
       const fetchTrainerData = async () => {
-        const { data }  = await axios.get<ResultResponse>(
-          `${window.location.href}/api/trainer`
-        );
-        setTrainerData(data.trainerData); 
+        try {
+          const { data }  = await axios.get<ResultResponse>(
+            `${window.location.href}/api/trainer`
+          );
+          setTrainerData(data.trainerData); 
+          setError('No error')
+        }
+        catch (err) {
+          setError('Loading error')
+        }
       };
       fetchTrainerData();
-    }
-    catch (err)
-    {
-      setError('Loading error')
-    }
   }, []);
 
 
@@ -71,7 +70,7 @@ const TrainerResults: React.FC = () => {
         ) : (
           <div className="lds-hourglass"></div>
         )}
-        { error === 'No error' ?  setTrainerView() : setErrorView() }
+        { error === 'No error' ?  setLoadingView() : setErrorView() }
       </div>
   );
 };
