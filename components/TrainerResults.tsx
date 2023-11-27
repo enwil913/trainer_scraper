@@ -30,7 +30,8 @@ const TrainerResults: React.FC = () => {
   //Set views
   const setLoadingView = () => {
     return (
-      <h2>Loading...</h2>
+      //not show any text...
+      <h2></h2>
     )
    }
 
