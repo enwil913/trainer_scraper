@@ -1,5 +1,4 @@
 import React from 'react'
-// import TrainerCardList from './TrainerCardList';
 
 
 const Trainer = ({ trainer }) => {
