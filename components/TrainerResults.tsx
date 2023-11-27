@@ -55,11 +55,11 @@ const TrainerResults: React.FC = () => {
         setTrainerData(data.trainerData); 
       };
       fetchTrainerData();
-      setError(null)
+      // setError(null)
     }
     catch (err)
     {
-      setError(err)
+      setError("this is error")
     }
   }, []);
 
