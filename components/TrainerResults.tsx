@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TrainerMenu from "./TrainerMenu";
 import Trainer from "./Trainer";
+import TrainerCardList from "./TrainerCardList";
+
 
 interface Result {
     trainerName: string;
@@ -38,7 +40,10 @@ const TrainerResults: React.FC = () => {
         <TrainerMenu showComingRace={showComingRace}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
-            <Trainer key={trainer.trainerName} trainer={trainer}/>
+            <div>
+              <Trainer key={trainer.trainerName} trainer={trainer}/>
+              <TrainerCardList />
+            </div>  
             ))
         ) : (
           <div className="lds-hourglass"></div>

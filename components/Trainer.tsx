@@ -16,7 +16,7 @@ const Trainer = ({ trainer }) => {
                 <div>總頭馬: {trainer.trainerWin}</div> 
                 <div>連輸: {trainer.trainerConsecutiveLoss}</div>  
                 <div>近十場頭馬(左至右): {historyList}</div>
-            </p>  
+            </p>
         </div>
     )
   }

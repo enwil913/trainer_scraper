@@ -4,7 +4,6 @@ import { JSDOM } from "jsdom";
 import { TrainersList_Const } from "../../components/Constants";
 import { TrainersSelfMsg_Const } from "../../components/Constants";
 import { TrainersBetMsg_Const } from "../../components/Constants";
-import TrainerResults from "../../components/TrainerResults";
 
 
 //for meta race date meta data
