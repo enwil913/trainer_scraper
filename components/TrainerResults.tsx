@@ -82,7 +82,7 @@ const TrainerResults: React.FC = () => {
 
   return (
       <div>
-        <TrainerMenu toggleCardList={toggleCardList()}/>
+        <TrainerMenu toggleCardList={toggleCardList}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <div key={trainer.trainerName}>
