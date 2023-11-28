@@ -12,7 +12,7 @@ interface TrainerResult {
     trainerWin: string;
     trainerHistory: [];
     trainerConsecutiveLoss: number;
-    trainerCardList: [];
+    trainerCardList?: number[];
     log: string;
 }
 
@@ -52,9 +52,9 @@ const TrainerResults: React.FC = () => {
     //
     const tData = trainerData
     if (!showCardList) {
-      tData.map((trainerCardList: { trainerCardList: number[]; }) => {
-        console.log(trainerCardList[0])
-        trainerCardList[0] = 0
+      tData.map((trainer) => {
+        console.log(trainer.trainerCardList[0])
+        trainer.trainerCardList[0] = 0
       })
       console.log(tData[0].trainerCardList)
       console.log('Show card list!')
