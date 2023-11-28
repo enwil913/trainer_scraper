@@ -105,8 +105,8 @@ function getTrainersList(data) {
             }
         }
         trainerCardList[0] = 1
-        trainerCardList[2] = 1
-        trainerCardList[3] = 1
+        trainerCardList[1] = 2
+        trainerCardList[2] = 3
         return { //init the trainer data, should match with "let" at the beginning of this function
             trainerName,
             trainerShortName,
