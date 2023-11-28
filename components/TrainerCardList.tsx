@@ -2,8 +2,8 @@ import React from 'react'
 
 const TrainerCardList = ({trainer}) => {
   return (
-    <div>
-      Show Trainer Card List!
+    <div key={trainer.trainerName} className='trainerCardList'>
+      <p>Show Trainer Card List!</p>
     </div>
   )
 }
