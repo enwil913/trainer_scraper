@@ -67,12 +67,14 @@ const TrainerResults: React.FC = () => {
         <TrainerMenu showComingRace={showComingRace}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
+            <div>
               <Trainer key={trainer.trainerName} trainer={trainer}/>
-            ))
+              <TrainerCardList trainer={trainer}/>
+            </div>
+              ))
         ) : (
           <div className="lds-hourglass"></div>
         )}
-        <TrainerCardList />
         { error === 'No error' ?  setLoadingView() : setErrorView() }
       </div>
   );

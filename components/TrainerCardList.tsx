@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TrainerCardList = () => {
+const TrainerCardList = ({trainer}) => {
   return (
     <div>
       Show Trainer Card List!
