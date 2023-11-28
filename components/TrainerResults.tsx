@@ -18,16 +18,13 @@ interface ResultResponse {
     trainerData: Result[];
 };
 
-const showComingRace = () => {
-  console.log('Show coming race!')
-}
 
 
 const TrainerResults: React.FC = () => {
   const [trainerData, setTrainerData] = useState<Result[]>([]);
   const [error, setError] = useState('No error')
 
-
+  //const function
   //Set views
   const setLoadingView = () => {
     return (
@@ -35,7 +32,6 @@ const TrainerResults: React.FC = () => {
       <h2></h2>
     )
    }
-
   
   const setErrorView = () => {
     return (
@@ -45,21 +41,27 @@ const TrainerResults: React.FC = () => {
     )
   }
 
+  const showComingRace = () => {
+    console.log('Show coming race!')
+  }
+ 
+
   useEffect(() => {
-      const fetchTrainerData = async () => {
-        try {
-          const { data }  = await axios.get<ResultResponse>(
-            `${window.location.href}/api/trainer`
-          );
-          setTrainerData(data.trainerData); 
-          setError('No error')
-        }
-        catch (err) {
-          setError('Loading error')
-        }
-      };
-      fetchTrainerData();
-  }, []);
+    const fetchTrainerData = async () => {
+      try {
+        const { data }  = await axios.get<ResultResponse>(
+          `${window.location.href}/api/trainer`
+        );
+        setTrainerData(data.trainerData); 
+        setError('No error')
+      }
+      catch (err) {
+        setError('Loading error')
+      }
+    };
+    fetchTrainerData();
+}, []);
+
 
 
   return (
