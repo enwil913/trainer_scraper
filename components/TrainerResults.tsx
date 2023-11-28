@@ -5,23 +5,24 @@ import Trainer from "./Trainer";
 import TrainerCardList from "./TrainerCardList";
 
 
-interface Result {
+interface TrainerResult {
     trainerName: string;
     trainerShortName: string;
     trainerWin: string;
     trainerHistory: [];
     trainerConsecutiveLoss: number;
+    trainerCardList: [];
     log: string;
 }
 
 interface ResultResponse {
-    trainerData: Result[];
+    trainerData: TrainerResult[];
 };
 
 
 
 const TrainerResults: React.FC = () => {
-  const [trainerData, setTrainerData] = useState<Result[]>([]);
+  const [trainerData, setTrainerData] = useState<TrainerResult[]>([]);
   const [error, setError] = useState('No error')
   const [showCardList, setShowCardList] = useState(false);
 

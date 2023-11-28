@@ -89,6 +89,7 @@ function getTrainersList(data) {
         let trainerWin = '';
         let trainerHistory = [];
         let trainerConsecutiveLoss = 0
+        let trainerCardList = [];
         let log = ''
 
         const trainerText = removeConsecutiveBlanks(trainer.innerHTML);
@@ -103,12 +104,16 @@ function getTrainersList(data) {
                 trainerWin = trainerInfoArr[1].substring(0, nextIndex);
             }
         }
+        trainerCardList[0] = 1
+        trainerCardList[2] = 1
+        trainerCardList[3] = 1
         return { //init the trainer data, should match with "let" at the beginning of this function
             trainerName,
             trainerShortName,
             trainerWin,
             trainerHistory,
             trainerConsecutiveLoss,
+            trainerCardList,
             log,
         };
     });
@@ -169,6 +174,7 @@ export default async function getTrainers(
             }]
           });    
         const trainersResult = getTrainersList(cardList.data);
+        
         //Set race day win result  
         trainersResult.map((trainer) => {
             let dayCount = 0;
