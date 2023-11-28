@@ -47,15 +47,12 @@ const TrainerResults: React.FC = () => {
   //get card list data and show
   const toggleCardList = () => {
     setShowCardList((showCardList) => !showCardList)
-    //not working....
-    //
-    //
     const tData = trainerData
     if (!showCardList) {
       tData.map((trainer) => {
         trainer.trainerCardList[0] = 0
-        trainer.trainerCardList[0] = 1
-        trainer.trainerCardList[0] = 2
+        trainer.trainerCardList[1] = 1
+        trainer.trainerCardList[2] = 2
       })
       console.log('Show card list!')
     }
