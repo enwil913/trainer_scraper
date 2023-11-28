@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import TrainerMenu from "./TrainerMenu";
 import Trainer from "./Trainer";
 import TrainerCardList from "./TrainerCardList";
+import trainer from "../pages/api/trainer";
 
 
 interface TrainerResult {
@@ -43,9 +44,20 @@ const TrainerResults: React.FC = () => {
     )
   }
 
-  const toggleCardList = () => {
+  //get card list data and show
+  const toggleCardList = (trainerData) => {
     setShowCardList((showCardList) => !showCardList)
-    console.log('Show/hide card list!')
+    if (showCardList) {
+      trainerData.map((trainerCardList: { trainerCardList: number[]; }) => {
+        trainerCardList[0] = 0
+        trainerCardList[1] = 1
+        trainerCardList[2] = 2
+      })
+      console.log('Show card list!')
+    }
+    else {
+      console.log('Hide card list!')
+    }
   }
  
 
@@ -69,7 +81,7 @@ const TrainerResults: React.FC = () => {
 
   return (
       <div>
-        <TrainerMenu showComingRace={toggleCardList}/>
+        <TrainerMenu toggleCardList={toggleCardList}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <div key={trainer.trainerName}>

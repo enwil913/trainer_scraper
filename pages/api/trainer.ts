@@ -104,9 +104,6 @@ function getTrainersList(data) {
                 trainerWin = trainerInfoArr[1].substring(0, nextIndex);
             }
         }
-        trainerCardList[0] = 1
-        trainerCardList[1] = 2
-        trainerCardList[2] = 3
         return { //init the trainer data, should match with "let" at the beginning of this function
             trainerName,
             trainerShortName,
