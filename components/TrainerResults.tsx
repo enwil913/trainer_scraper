@@ -67,8 +67,8 @@ const TrainerResults: React.FC = () => {
         <TrainerMenu showComingRace={showComingRace}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
-            <div>
-              <Trainer key={trainer.trainerName} trainer={trainer}/>
+            <div key={trainer.trainerName}>
+              <Trainer trainer={trainer}/>
               <TrainerCardList trainer={trainer}/>
             </div>
               ))
