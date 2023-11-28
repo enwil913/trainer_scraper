@@ -50,12 +50,13 @@ const TrainerResults: React.FC = () => {
     //not working....
     //
     //
+    const tData = trainerData
     if (!showCardList) {
-      trainerData.map((trainerCardList: { trainerCardList: number[]; }) => {
+      tData.map((trainerCardList: { trainerCardList: number[]; }) => {
         console.log(trainerCardList[0])
         trainerCardList[0] = 0
       })
-      console.log(trainerData[0].trainerCardList)
+      console.log(tData[0].trainerCardList)
       console.log('Show card list!')
     }
     else {
