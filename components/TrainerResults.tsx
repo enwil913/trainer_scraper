@@ -71,7 +71,7 @@ const TrainerResults: React.FC = () => {
         const { data }  = await axios.get<ResultResponse>(
           `${window.location.href}/api/trainer`
         );
-        setTrainerData(data.trainerData); 
+        setTrainerData(data.trainerData)
         setError('No error')
       }
       catch (err) {
