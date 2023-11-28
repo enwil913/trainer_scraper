@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TrainerMenu from "./TrainerMenu";
 import Trainer from "./Trainer";
+import TrainerCardList from "./TrainerCardList";
 
 
 interface Result {
@@ -71,6 +72,7 @@ const TrainerResults: React.FC = () => {
         ) : (
           <div className="lds-hourglass"></div>
         )}
+        <TrainerCardList />
         { error === 'No error' ?  setLoadingView() : setErrorView() }
       </div>
   );
