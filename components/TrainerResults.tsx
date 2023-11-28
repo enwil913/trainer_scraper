@@ -53,10 +53,10 @@ const TrainerResults: React.FC = () => {
     const tData = trainerData
     if (!showCardList) {
       tData.map((trainer) => {
-        console.log(trainer.trainerCardList[0])
         trainer.trainerCardList[0] = 0
+        trainer.trainerCardList[0] = 1
+        trainer.trainerCardList[0] = 2
       })
-      console.log(tData[0].trainerCardList)
       console.log('Show card list!')
     }
     else {
