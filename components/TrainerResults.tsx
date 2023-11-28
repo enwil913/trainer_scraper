@@ -23,8 +23,9 @@ interface ResultResponse {
 const TrainerResults: React.FC = () => {
   const [trainerData, setTrainerData] = useState<Result[]>([]);
   const [error, setError] = useState('No error')
+  const [showCardList, setShowCardList] = useState(false);
 
-  //const function
+  //const FUNCTION
   //Set views
   const setLoadingView = () => {
     return (
@@ -41,8 +42,9 @@ const TrainerResults: React.FC = () => {
     )
   }
 
-  const showComingRace = () => {
-    console.log('Show coming race!')
+  const toggleCardList = () => {
+    setShowCardList((showCardList) => !showCardList)
+    console.log('Show/hide card list!')
   }
  
 
@@ -66,12 +68,12 @@ const TrainerResults: React.FC = () => {
 
   return (
       <div>
-        <TrainerMenu showComingRace={showComingRace}/>
+        <TrainerMenu showComingRace={toggleCardList}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <div key={trainer.trainerName}>
               <Trainer trainer={trainer}/>
-              <TrainerCardList trainer={trainer}/>
+              {showCardList && <TrainerCardList trainer={trainer}/>}
             </div>
               ))
         ) : (
