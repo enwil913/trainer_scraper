@@ -51,11 +51,11 @@ const TrainerResults: React.FC = () => {
     //
     //
     if (!showCardList) {
-      console.log(TrainerCardList[0])
       trainerData.map((trainerCardList: { trainerCardList: number[]; }) => {
+        console.log(trainerCardList[0])
         trainerCardList[0] = 0
       })
-      console.log(TrainerCardList[0])
+      console.log(trainerData[0].trainerCardList)
       console.log('Show card list!')
     }
     else {
