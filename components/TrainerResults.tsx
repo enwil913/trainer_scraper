@@ -45,7 +45,7 @@ const TrainerResults: React.FC = () => {
   }
 
   //get card list data and show
-  const toggleCardList = () => {
+  const toggleCardList = (trainerData) => {
     setShowCardList((showCardList) => !showCardList)
     //not working....
     //
@@ -63,7 +63,6 @@ const TrainerResults: React.FC = () => {
       console.log('Hide card list!')
     }
   }
- 
 
   useEffect(() => {
     const fetchTrainerData = async () => {
@@ -82,10 +81,9 @@ const TrainerResults: React.FC = () => {
 }, []);
 
 
-
   return (
       <div>
-        <TrainerMenu toggleCardList={toggleCardList}/>
+        <TrainerMenu toggleCardList={toggleCardList(trainerData)}/>
         {trainerData && trainerData.length > 0 ? (
           trainerData.map((trainer) => (
             <div key={trainer.trainerName}>
