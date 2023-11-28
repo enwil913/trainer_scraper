@@ -46,8 +46,9 @@ const TrainerResults: React.FC = () => {
 
   //get card list data and show
   const toggleCardList = (trainerData) => {
+    const isShow = showCardList
     setShowCardList((showCardList) => !showCardList)
-    if (showCardList) {
+    if (isShow) {
       trainerData.map((trainerCardList: { trainerCardList: number[]; }) => {
         trainerCardList[0] = 0
         trainerCardList[1] = 1
