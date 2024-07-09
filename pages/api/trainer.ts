@@ -71,9 +71,13 @@ function getRaceDatesResult(data) {
         const raceResultArray = Array.from(raceResultTable, (date) => {
             return date.textContent;
         });
+        console.log('1')
         console.log(raceResultArray)
 
         const raceTrainersArray = getEveryNth(raceResultArray, 4);    
+
+        console.log('2')
+        console.log(raceTrainersArray)
         //for testing at this moment
         return raceTrainersArray
     }
