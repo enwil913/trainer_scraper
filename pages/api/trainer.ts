@@ -37,9 +37,9 @@ function getEveryNth(arr, nth) {
     const result = [];
     //const bDivisble =  ((arr.length % nth) == 0) 
     for (let index = 0; index < arr.length; index += nth) {
-      console.log(index)
+      //console.log(index)
       //console.log(bDivisble)
-      console.log(arr[index])
+      //console.log(arr[index])
       //bDivisble ? result.push(arr[index]) : result.push('XX');
       result.push(arr[index])
     }
