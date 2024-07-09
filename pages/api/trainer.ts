@@ -149,12 +149,13 @@ export default async function getTrainers(
             const dateSplitted = date.split('/')
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
-        //get 10 races results          
+        console.log(datesArray)
+
+          //get 10 races results          
         //do one by one
         const raceAllDatesResultArray = [];
         for (let i=0; i<=9; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
-            console.log(raceAllDatesResultArray[i])
         }
         
         //NOT working...review multiple axios "async await" 
