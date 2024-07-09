@@ -37,6 +37,9 @@ function getEveryNth(arr, nth) {
     const result = [];
     const bDivisble =  ((arr.length % nth) == 0) 
     for (let index = 0; index < arr.length; index += nth) {
+      console.log(index)
+      console.log(bDivisble)
+      console.log(arr[index])
       bDivisble ? result.push(arr[index]) : result.push('XX');
     }
     return result;
@@ -159,11 +162,11 @@ export default async function getTrainers(
           });
 
           //get 10 races results          
-        //do one by one
+        //do one by one, from 0 to 9 
         const raceAllDatesResultArray = [];
         for (let i=0; i<=0; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
-            console.log(raceAllDatesResultArray[i])
+            //console.log(raceAllDatesResultArray[i])
         }
         
         //NOT working...review multiple axios "async await" 
