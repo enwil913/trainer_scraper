@@ -67,11 +67,12 @@ function getRaceDatesResult(data) {
         const dom = new JSDOM(data);
         const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('.stableB a[href*="stable_view.cgi"]');
 
-        console.log(raceResultTable)
 
         const raceResultArray = Array.from(raceResultTable, (date) => {
             return date.textContent;
         });
+        console.log(raceResultArray)
+
         const raceTrainersArray = getEveryNth(raceResultArray, 4);    
         //for testing at this moment
         return raceTrainersArray
