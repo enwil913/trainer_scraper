@@ -75,13 +75,13 @@ function getRaceDatesResult(data) {
         const raceResultArray = Array.from(raceResultTable, (date) => {
             return date.textContent;
         });
-        console.log('1')
-        console.log(raceResultArray)
+        // console.log('1')
+        // console.log(raceResultArray)
 
         const raceTrainersArray = getEveryNth(raceResultArray, 4);    
 
-        console.log('2')
-        console.log(raceTrainersArray)
+        // console.log('2')
+        // console.log(raceTrainersArray)
         //for testing at this moment
         return raceTrainersArray
     }
@@ -165,7 +165,7 @@ export default async function getTrainers(
           //get 10 races results          
         //do one by one, from 0 to 9 
         const raceAllDatesResultArray = [];
-        for (let i=0; i<=0; i++) {
+        for (let i=0; i<=9; i++) {
             raceAllDatesResultArray[i] = getRaceDatesResult(await getDatafromURL(raceDatesURL[i]));
             //console.log(raceAllDatesResultArray[i])
         }
