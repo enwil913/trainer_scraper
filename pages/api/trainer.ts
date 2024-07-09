@@ -114,7 +114,7 @@ function getTrainersList(data) {
             log,
         };
     });
-    //fitler the trainer and fill-in trainer details (i.e. trainerShortName)
+    //filter the trainer and fill-in trainer details (i.e. trainerShortName)
     const trainersResult = trainers.filter(checkTrainerName);
     for (var t in trainersResult) {
         TrainersList_Const.map((cTrainer) => {
