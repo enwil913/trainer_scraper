@@ -66,6 +66,9 @@ function getRaceDatesResult(data) {
     try {
         const dom = new JSDOM(data);
         const raceResultTable : HTMLCollectionOf<Element> = dom.window.document.querySelectorAll('.stableB a[href*="stable_view.cgi"]');
+
+        console.log(raceResultTable)
+
         const raceResultArray = Array.from(raceResultTable, (date) => {
             return date.textContent;
         });
@@ -149,7 +152,6 @@ export default async function getTrainers(
             const dateSplitted = date.split('/')
             return localResultURLPrefix + dateSplitted[2] + dateSplitted[1] + dateSplitted[0] + localResultURLPostfix
           });
-        console.log(datesArray)
 
           //get 10 races results          
         //do one by one
