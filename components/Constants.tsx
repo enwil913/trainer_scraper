@@ -56,7 +56,7 @@ export const TrainersList_Const = [
       "winHistory": []
     },
     {
-      "id": 15, "name": "希斯", "shortName": "希", "totalWin": 0,
+      "id": 15, "name": "大衛希斯", "shortName": "希", "totalWin": 0,
       "winHistory": []
     },
     {
